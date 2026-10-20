@@ -463,11 +463,167 @@ html:not(.ql) #ql{display:none}
   .match .link{grid-column:1/-1}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .pre{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ---------- motion layer ---------- */
+:root{--out:cubic-bezier(.16,.84,.24,1);--wipe:cubic-bezier(.76,0,.18,1)}
+html.mo.leaving body{opacity:1}
+
+/* veil: the curtain between pages */
+#veil{position:fixed;inset:0;z-index:180;background:var(--ink);color:var(--bg);display:grid;place-items:center;pointer-events:none;visibility:hidden;clip-path:inset(100% 0 0 0)}
+#veil .vin{display:flex;flex-direction:column;align-items:center;gap:22px}
+#veil .vw{font-family:var(--mono);font-size:10.5px;letter-spacing:.5em;padding-left:.5em;color:#a49e92}
+#veil .vt{display:block;overflow:hidden;padding:0 .1em .12em}
+#veil #veilT{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(40px,6vw,84px);line-height:1.05;transform:translateY(105%)}
+#veil .vl{width:120px;height:1px;background:rgba(245,243,238,.18);position:relative;overflow:hidden}
+#veil .vl b{position:absolute;inset:0;background:var(--bg);transform:scaleX(0);transform-origin:left}
+#veil.go{visibility:visible;pointer-events:auto;clip-path:inset(0);transition:clip-path .9s var(--wipe)}
+#veil.go #veilT{transform:none;transition:transform 1s var(--out) .38s}
+#veil.go .vl b{transform:scaleX(1);transition:transform 1.1s var(--wipe) .3s}
+html.arr #veil{visibility:visible;clip-path:inset(0)}
+html.arr #veil #veilT{transform:none}
+html.arr #veil .vl b{transform:scaleX(1);transform-origin:right}
+#veil.lift{clip-path:inset(0 0 100% 0);transition:clip-path 1.15s var(--wipe) .35s}
+#veil.lift #veilT{transform:translateY(-105%);transition:transform .7s var(--wipe)}
+#veil.lift .vl b{transform:scaleX(0);transition:transform .6s var(--wipe)}
+
+/* words that rise out of a hairline mask */
+.mo .sp .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .09em .16em 0;margin:0 -.09em -.16em 0}
+.mo .sp .wi{display:inline-block;transform:translateY(112%) rotate(4deg);transform-origin:0 100%;transition:transform 1.35s var(--out) calc(var(--i) * 60ms + var(--d, 0ms))}
+.mo .sp.in .wi{transform:none}
+
+/* words that fill with ink as you read */
+.mo .ik{opacity:.14;transition:opacity .5s ease}
+.mo .ik.on{opacity:1}
+
+/* images unveil from below and settle */
+.mo .uv{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s var(--wipe) var(--d, 0ms)}
+.mo .uv.in{clip-path:inset(0 0 0 0)}
+.mo .uv img{scale:1.24;transition:scale 2.4s var(--out) var(--d, 0ms),transform 1.4s var(--ease),filter .8s ease}
+.mo .uv.in img{scale:1}
+.mo img.uv{scale:1}
+.mo .plx img{height:118%!important;will-change:translate}
+
+/* hairlines draw themselves */
+.mo .ld{border-top-color:transparent!important;position:relative}
+.mo .ld::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 1.9s var(--wipe)}
+.mo .ld.in::before{transform:none}
+
+/* groups arrive one by one */
+.mo .stg>*{opacity:0;translate:0 22px;transition:opacity 1.1s ease calc(var(--i) * 110ms + 200ms),translate 1.3s var(--out) calc(var(--i) * 110ms + 200ms)}
+.mo .stg.in>*{opacity:1;translate:0 0}
+.mo .fade{opacity:0;translate:0 14px;transition:opacity 1.2s ease var(--d, 0ms),translate 1.4s var(--out) var(--d, 0ms)}
+.mo .fade.in{opacity:1;translate:0 0}
+
+/* scroll cue */
+.cue{display:inline-flex;align-items:center;gap:12px}
+.cue i{width:44px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.cue i::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateX(-100%);animation:cue 2.6s var(--wipe) infinite}
+@keyframes cue{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* notes marquee */
+.marq{overflow:hidden;margin-bottom:clamp(64px,8vw,120px);padding:clamp(28px,4vw,56px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);user-select:none}
+.mq-t{display:flex;width:max-content;will-change:transform}
+.mq-t span{font-family:var(--serif);font-style:italic;font-size:clamp(52px,8.4vw,136px);line-height:1;color:#cdc5b6;padding:0 .28em;white-space:nowrap;transition:color .6s}
+.mq-t span:nth-child(4n+1){color:var(--ink)}
+.mq-t b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.1em;color:var(--accent);align-self:center;white-space:nowrap}
+
+/* the page's own progress, a bronze hairline under the header */
+.sprog{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--accent);transform:scaleX(var(--sp,0));transform-origin:left;pointer-events:none}
+.mo .logo{transition:letter-spacing 1.2s var(--out),padding 1.2s var(--out)}
+.mo .top.scrolled .logo{letter-spacing:.3em;padding-left:.3em}
+
+/* text that rolls on hover, without duplicating it for screen readers */
+.roll{display:inline-block;overflow:hidden;vertical-align:top;line-height:1.5em;height:1.5em}
+.roll>span{display:inline-block;text-shadow:0 1.5em 0 currentColor;transition:transform .6s var(--out)}
+a:hover>.roll>span,button:hover>.roll>span,.btn:hover .roll>span{transform:translateY(-1.5em)}
+.mo .btn{position:relative;overflow:hidden;isolation:isolate}
+.mo .btn::before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:transform .7s var(--wipe);z-index:-1}
+.mo .btn:hover{background:var(--ink)}
+.mo .btn:hover::before{transform:none}
+.mo .btn.ghost::before{background:var(--ink)}
+.mo .btn.ghost:hover{background:none;color:var(--bg)}
+
+/* film: chapter title letters breathe in */
+.ch{display:inline-block;animation:chIn 1s var(--out) both;animation-delay:calc(var(--i) * 24ms)}
+@keyframes chIn{from{opacity:0;filter:blur(8px);translate:0 .4em}}
+.mo .film-foot .cap p{transition:opacity .6s ease}
+
+/* quotes: words exhale */
+.mo .slide.on .qw{display:inline-block;animation:qwIn 1.1s var(--out) both;animation-delay:calc(var(--i) * 40ms)}
+@keyframes qwIn{from{opacity:0;filter:blur(10px);translate:0 .35em}}
+
+/* ingredient preview: wipe, not fade */
+.mo .ilist .view img{opacity:1;clip-path:inset(100% 0 0 0);scale:1.14;transition:clip-path 1.15s var(--wipe),scale 1.8s var(--out);z-index:1}
+.mo .ilist .view img.on{clip-path:inset(0);scale:1;z-index:2}
+.mo .ilist .view img.was{clip-path:inset(0);scale:1;z-index:1;transition:none}
+.mo .ilist .view figcaption{z-index:3}
+.mo .ilist li button .nm{transition:letter-spacing .8s var(--out),font-style 0s}
+.mo .ilist li button:hover .nm{letter-spacing:.02em}
+
+/* panels: contents follow the panel in */
+.mo .panel.on .ph>*,.mo .panel.on .body>*,.mo .panel.on .qv-in>*,.mo .panel.on .pf>*{animation:pIn .9s var(--out) both}
+.mo .panel.on .body>*:nth-child(2),.mo .panel.on .qv-in>*:nth-child(2){animation-delay:.08s}
+.mo .panel.on .qv-in>*:nth-child(3){animation-delay:.14s}.mo .panel.on .qv-in>*:nth-child(4){animation-delay:.2s}
+.mo .panel.on .qv-in>*:nth-child(5){animation-delay:.26s}.mo .panel.on .qv-in>*:nth-child(6){animation-delay:.32s}
+.mo .panel.on .pf>*{animation-delay:.3s}
+.mo .panel.on .qv-img img{animation:imgIn 1.4s var(--wipe) both .1s}
+@keyframes pIn{from{opacity:0;translate:0 18px}}
+@keyframes imgIn{from{clip-path:inset(100% 0 0 0);scale:1.15}to{clip-path:inset(0);scale:1}}
+.mo .srch.on .in>*{animation:pIn 1s var(--out) both}
+.mo .srch.on .in>*:nth-child(2){animation-delay:.08s}.mo .srch.on .in>*:nth-child(3){animation-delay:.16s}.mo .srch.on .in>*:nth-child(4){animation-delay:.24s}
+.mo .mnav.on nav a{animation:pIn 1s var(--out) both}
+.mo .mnav.on nav a:nth-child(2){animation-delay:.06s}.mo .mnav.on nav a:nth-child(3){animation-delay:.12s}.mo .mnav.on nav a:nth-child(4){animation-delay:.18s}.mo .mnav.on nav a:nth-child(5){animation-delay:.24s}.mo .mnav.on nav a:nth-child(6){animation-delay:.3s}
+
+/* the drop that carries a bottle to the bag */
+.drop{position:fixed;left:-7px;top:-10px;z-index:120;pointer-events:none;width:14px;height:20px}
+.drop i{display:block;width:100%;height:100%;will-change:transform}
+.drop svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 6px rgba(122,85,40,.35))}
+.bump{animation:bump .9s var(--out)}
+@keyframes bump{0%{color:var(--accent)}30%{transform:translateY(-3px)}100%{transform:none}}
+.ripple{position:fixed;z-index:119;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;box-shadow:0 0 0 1px var(--accent);pointer-events:none;animation:rip 1s var(--out) forwards}
+@keyframes rip{to{transform:scale(7);opacity:0}}
+
+/* footer wordmark letters */
+.mo .fword .fl{display:inline-block;transform:translateY(105%);transition:transform 1.5s var(--out) calc(var(--i) * 80ms)}
+.mo .fword.in .fl{transform:none}
+
+/* the cursor */
+html.cur,html.cur a,html.cur button,html.cur [role=button],html.cur label,html.cur summary{cursor:none}
+#cur{position:fixed;left:0;top:0;z-index:300;pointer-events:none;display:none}
+html.cur #cur{display:block}
+#cur .dot,#cur .ring{position:fixed;left:0;top:0;border-radius:50%;will-change:transform}
+#cur .dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--ink);transition:opacity .3s,scale .3s}
+#cur .ring{width:38px;height:38px;margin:-19px 0 0 -19px;box-shadow:inset 0 0 0 1px rgba(26,25,22,.35);display:grid;place-items:center;transition:width .55s var(--out),height .55s var(--out),margin .55s var(--out),background .5s,box-shadow .5s,opacity .3s}
+#cur #curT{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .3s}
+#cur.link .ring{width:54px;height:54px;margin:-27px 0 0 -27px;box-shadow:inset 0 0 0 1px var(--accent)}
+#cur.link .dot{background:var(--accent)}
+#cur.lab .ring{width:92px;height:92px;margin:-46px 0 0 -46px;background:rgba(245,243,238,.82);box-shadow:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#cur.lab .dot{opacity:0}
+#cur.lab #curT{opacity:1}
+#cur.down .ring{scale:.85}
+#cur.text .ring{opacity:0}
+#cur.out{opacity:0}
+
+/* scent mist */
+#mist{position:fixed;inset:0;width:100%;height:100%;z-index:45;pointer-events:none;mix-blend-mode:screen}
+
+/* smooth scroll */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+@media (max-width:860px){.mq-t span{font-size:clamp(44px,13vw,80px)}}
+@media (prefers-reduced-motion:reduce){#veil,#mist,#cur{display:none!important}.mq-t{transform:none!important}}
 </style>
 <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(!sessionStorage.getItem('avenor-q')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('ql');sessionStorage.setItem('avenor-q','1');}}catch(e){}})();</script>
+<script>(function(){var d=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('mo');var t=sessionStorage.getItem('avenor-nav');if(t&&!d.classList.contains('ql')){d.classList.add('arr');window.__veil=t;}sessionStorage.removeItem('avenor-nav');}catch(e){}})();</script>
 </head>
 <body>
 <div id="ql" role="status" aria-label="Loading AVENOR"><div class="c"><div class="w">AVENOR</div><div class="ln"><b id="qlBar"></b></div><div class="meta"><span>Eau de Parfum</span><span id="qlNum">000</span></div></div></div>
+<div id="veil" aria-hidden="true"><div class="vin"><span class="vw">AVENOR</span><span class="vt"><span id="veilT"></span></span><span class="vl"><b></b></span></div></div>
+<canvas id="mist" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"><i class="dot"></i><i class="ring"><span id="curT"></span></i></div>
 <header class="top"><div class="wrap bar">
   <nav class="l" aria-label="Main"><a href="shop.html">Shop</a><a href="story.html">Our Story</a><a href="ingredients.html">Ingredients</a><a href="journal.html">Journal</a></nav>
   <button class="menu" type="button" data-menu aria-label="Open menu">Menu</button>
@@ -578,8 +734,8 @@ html:not(.ql) #ql{display:none}
     const a = e.target.closest('a[href]'); if (!a) return;
     const raw = a.getAttribute('href'); if (a.target === '_blank' || !/^[\w-]+\.html(#[\w-]*)?$/.test(raw)) return;
     const u = new URL(a.href, location.href);
-    if (u.pathname === location.pathname) { if (u.hash) { e.preventDefault(); history.replaceState(null, '', u.hash); dispatchEvent(new HashChangeEvent('hashchange')); const t = D.getElementById(u.hash.slice(1)); if (t) t.scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); closeAll(); } return; }
-    if (RM) return; e.preventDefault(); H.classList.add('leaving'); setTimeout(() => location.href = a.href, 380);
+    if (u.pathname === location.pathname) { if (u.hash) { e.preventDefault(); history.replaceState(null, '', u.hash); dispatchEvent(new HashChangeEvent('hashchange')); const t = D.getElementById(u.hash.slice(1)); if (t) { if (window.avLenis) avLenis.scrollTo(t, {offset: -70}); else t.scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); } closeAll(); } return; }
+    if (RM) return; e.preventDefault(); if (window.avLeave) { closeAll(); return avLeave(a.href); } H.classList.add('leaving'); setTimeout(() => location.href = a.href, 380);
   });
   addEventListener('pageshow', e => { if (e.persisted) H.classList.remove('leaving'); });
 
@@ -836,6 +992,244 @@ html:not(.ql) #ql{display:none}
   $('book').addEventListener('click', () => say(st ? `Requested ${fmt(days[sd])}, ${st} IST. We'll confirm by email.` : 'Choose a time first.'));
   rD(); rT();
   if (location.hash === '#faq') document.querySelector('.faq details')?.setAttribute('open', '');
+})();
+</script>
+<script>!function(t,i){"object"==typeof exports&&"undefined"!=typeof module?module.exports=i():"function"==typeof define&&define.amd?define(i):(t="undefined"!=typeof globalThis?globalThis:t||self).Lenis=i()}(this,(function(){"use strict";function clamp(t,i,e){return Math.max(t,Math.min(i,e))}class Animate{constructor(){this.isRunning=!1,this.value=0,this.from=0,this.to=0,this.currentTime=0}advance(t){var i;if(!this.isRunning)return;let e=!1;if(this.duration&&this.easing){this.currentTime+=t;const i=clamp(0,this.currentTime/this.duration,1);e=i>=1;const s=e?1:this.easing(i);this.value=this.from+(this.to-this.from)*s}else this.lerp?(this.value=function damp(t,i,e,s){return function lerp(t,i,e){return(1-e)*t+e*i}(t,i,1-Math.exp(-e*s))}(this.value,this.to,60*this.lerp,t),Math.round(this.value)===this.to&&(this.value=this.to,e=!0)):(this.value=this.to,e=!0);e&&this.stop(),null===(i=this.onUpdate)||void 0===i||i.call(this,this.value,e)}stop(){this.isRunning=!1}fromTo(t,i,{lerp:e,duration:s,easing:o,onStart:n,onUpdate:l}){this.from=this.value=t,this.to=i,this.lerp=e,this.duration=s,this.easing=o,this.currentTime=0,this.isRunning=!0,null==n||n(),this.onUpdate=l}}class Dimensions{constructor(t,i,{autoResize:e=!0,debounce:s=250}={}){this.wrapper=t,this.content=i,this.width=0,this.height=0,this.scrollHeight=0,this.scrollWidth=0,this.resize=()=>{this.onWrapperResize(),this.onContentResize()},this.onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)},this.onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)},e&&(this.debouncedResize=function debounce(t,i){let e;return function(...s){let o=this;clearTimeout(e),e=setTimeout((()=>{e=void 0,t.apply(o,s)}),i)}}(this.resize,s),this.wrapper instanceof Window?window.addEventListener("resize",this.debouncedResize,!1):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}destroy(){var t,i;null===(t=this.wrapperResizeObserver)||void 0===t||t.disconnect(),null===(i=this.contentResizeObserver)||void 0===i||i.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener("resize",this.debouncedResize,!1)}get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}}class Emitter{constructor(){this.events={}}emit(t,...i){var e;let s=this.events[t]||[];for(let t=0,o=s.length;t<o;t++)null===(e=s[t])||void 0===e||e.call(s,...i)}on(t,i){var e;return(null===(e=this.events[t])||void 0===e?void 0:e.push(i))||(this.events[t]=[i]),()=>{var e;this.events[t]=null===(e=this.events[t])||void 0===e?void 0:e.filter((t=>i!==t))}}off(t,i){var e;this.events[t]=null===(e=this.events[t])||void 0===e?void 0:e.filter((t=>i!==t))}destroy(){this.events={}}}const t=100/6,i={passive:!1};class VirtualScroll{constructor(e,s={wheelMultiplier:1,touchMultiplier:1}){this.element=e,this.options=s,this.touchStart={x:0,y:0},this.lastDelta={x:0,y:0},this.window={width:0,height:0},this.emitter=new Emitter,this.onTouchStart=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:0,y:0},this.emitter.emit("scroll",{deltaX:0,deltaY:0,event:t})},this.onTouchMove=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t,s=-(i-this.touchStart.x)*this.options.touchMultiplier,o=-(e-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:s,y:o},this.emitter.emit("scroll",{deltaX:s,deltaY:o,event:t})},this.onTouchEnd=t=>{this.emitter.emit("scroll",{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:t})},this.onWheel=i=>{let{deltaX:e,deltaY:s,deltaMode:o}=i;e*=1===o?t:2===o?this.window.width:1,s*=1===o?t:2===o?this.window.height:1,e*=this.options.wheelMultiplier,s*=this.options.wheelMultiplier,this.emitter.emit("scroll",{deltaX:e,deltaY:s,event:i})},this.onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}},window.addEventListener("resize",this.onWindowResize,!1),this.onWindowResize(),this.element.addEventListener("wheel",this.onWheel,i),this.element.addEventListener("touchstart",this.onTouchStart,i),this.element.addEventListener("touchmove",this.onTouchMove,i),this.element.addEventListener("touchend",this.onTouchEnd,i)}on(t,i){return this.emitter.on(t,i)}destroy(){this.emitter.destroy(),window.removeEventListener("resize",this.onWindowResize,!1),this.element.removeEventListener("wheel",this.onWheel,i),this.element.removeEventListener("touchstart",this.onTouchStart,i),this.element.removeEventListener("touchmove",this.onTouchMove,i),this.element.removeEventListener("touchend",this.onTouchEnd,i)}}return class Lenis{constructor({wrapper:t=window,content:i=document.documentElement,eventsTarget:e=t,smoothWheel:s=!0,syncTouch:o=!1,syncTouchLerp:n=.075,touchInertiaMultiplier:l=35,duration:r,easing:h=(t=>Math.min(1,1.001-Math.pow(2,-10*t))),lerp:a=.1,infinite:c=!1,orientation:u="vertical",gestureOrientation:d="vertical",touchMultiplier:p=1,wheelMultiplier:m=1,autoResize:v=!0,prevent:g,virtualScroll:S,__experimental__naiveDimensions:w=!1}={}){this._isScrolling=!1,this._isStopped=!1,this._isLocked=!1,this._preventNextNativeScrollEvent=!1,this._resetVelocityTimeout=null,this.time=0,this.userData={},this.lastVelocity=0,this.velocity=0,this.direction=0,this.animate=new Animate,this.emitter=new Emitter,this.onPointerDown=t=>{1===t.button&&this.reset()},this.onVirtualScroll=t=>{if("function"==typeof this.options.virtualScroll&&!1===this.options.virtualScroll(t))return;const{deltaX:i,deltaY:e,event:s}=t;if(this.emitter.emit("virtual-scroll",{deltaX:i,deltaY:e,event:s}),s.ctrlKey)return;const o=s.type.includes("touch"),n=s.type.includes("wheel");this.isTouching="touchstart"===s.type||"touchmove"===s.type;if(this.options.syncTouch&&o&&"touchstart"===s.type&&!this.isStopped&&!this.isLocked)return void this.reset();const l=0===i&&0===e,r="vertical"===this.options.gestureOrientation&&0===e||"horizontal"===this.options.gestureOrientation&&0===i;if(l||r)return;let h=s.composedPath();h=h.slice(0,h.indexOf(this.rootElement));const a=this.options.prevent;if(h.find((t=>{var i,e,s,l,r;return t instanceof HTMLElement&&("function"==typeof a&&(null==a?void 0:a(t))||(null===(i=t.hasAttribute)||void 0===i?void 0:i.call(t,"data-lenis-prevent"))||o&&(null===(e=t.hasAttribute)||void 0===e?void 0:e.call(t,"data-lenis-prevent-touch"))||n&&(null===(s=t.hasAttribute)||void 0===s?void 0:s.call(t,"data-lenis-prevent-wheel"))||(null===(l=t.classList)||void 0===l?void 0:l.contains("lenis"))&&!(null===(r=t.classList)||void 0===r?void 0:r.contains("lenis-stopped")))})))return;if(this.isStopped||this.isLocked)return void s.preventDefault();if(!(this.options.syncTouch&&o||this.options.smoothWheel&&n))return this.isScrolling="native",void this.animate.stop();s.preventDefault();let c=e;"both"===this.options.gestureOrientation?c=Math.abs(e)>Math.abs(i)?e:i:"horizontal"===this.options.gestureOrientation&&(c=i);const u=o&&this.options.syncTouch,d=o&&"touchend"===s.type&&Math.abs(c)>5;d&&(c=this.velocity*this.options.touchInertiaMultiplier),this.scrollTo(this.targetScroll+c,Object.assign({programmatic:!1},u?{lerp:d?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}))},this.onNativeScroll=()=>{if(null!==this._resetVelocityTimeout&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent)this._preventNextNativeScrollEvent=!1;else if(!1===this.isScrolling||"native"===this.isScrolling){const t=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-t,this.direction=Math.sign(this.animatedScroll-t),this.isScrolling="native",this.emit(),0!==this.velocity&&(this._resetVelocityTimeout=setTimeout((()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()}),400))}},window.lenisVersion="1.1.13",t&&t!==document.documentElement&&t!==document.body||(t=window),this.options={wrapper:t,content:i,eventsTarget:e,smoothWheel:s,syncTouch:o,syncTouchLerp:n,touchInertiaMultiplier:l,duration:r,easing:h,lerp:a,infinite:c,gestureOrientation:d,orientation:u,touchMultiplier:p,wheelMultiplier:m,autoResize:v,prevent:g,virtualScroll:S,__experimental__naiveDimensions:w},this.dimensions=new Dimensions(t,i,{autoResize:v}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.addEventListener("pointerdown",this.onPointerDown,!1),this.virtualScroll=new VirtualScroll(e,{touchMultiplier:p,wheelMultiplier:m}),this.virtualScroll.on("scroll",this.onVirtualScroll)}destroy(){this.emitter.destroy(),this.options.wrapper.removeEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.removeEventListener("pointerdown",this.onPointerDown,!1),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName()}on(t,i){return this.emitter.on(t,i)}off(t,i){return this.emitter.off(t,i)}setScroll(t){this.isHorizontal?this.rootElement.scrollLeft=t:this.rootElement.scrollTop=t}resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit("scroll",this)}reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){this.isStopped&&(this.isStopped=!1,this.reset())}stop(){this.isStopped||(this.isStopped=!0,this.animate.stop(),this.reset())}raf(t){const i=t-(this.time||t);this.time=t,this.animate.advance(.001*i)}scrollTo(t,{offset:i=0,immediate:e=!1,lock:s=!1,duration:o=this.options.duration,easing:n=this.options.easing,lerp:l=this.options.lerp,onStart:r,onComplete:h,force:a=!1,programmatic:c=!0,userData:u}={}){if(!this.isStopped&&!this.isLocked||a){if("string"==typeof t&&["top","left","start"].includes(t))t=0;else if("string"==typeof t&&["bottom","right","end"].includes(t))t=this.limit;else{let e;if("string"==typeof t?e=document.querySelector(t):t instanceof HTMLElement&&(null==t?void 0:t.nodeType)&&(e=t),e){if(this.options.wrapper!==window){const t=this.rootElement.getBoundingClientRect();i-=this.isHorizontal?t.left:t.top}const s=e.getBoundingClientRect();t=(this.isHorizontal?s.left:s.top)+this.animatedScroll}}if("number"==typeof t){if(t+=i,t=Math.round(t),this.options.infinite?c&&(this.targetScroll=this.animatedScroll=this.scroll):t=clamp(0,t,this.limit),t===this.targetScroll)return null==r||r(this),void(null==h||h(this));if(this.userData=null!=u?u:{},e)return this.animatedScroll=this.targetScroll=t,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),null==h||h(this),void(this.userData={});c||(this.targetScroll=t),this.animate.fromTo(this.animatedScroll,t,{duration:o,easing:n,lerp:l,onStart:()=>{s&&(this.isLocked=!0),this.isScrolling="smooth",null==r||r(this)},onUpdate:(t,i)=>{this.isScrolling="smooth",this.lastVelocity=this.velocity,this.velocity=t-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=t,this.setScroll(this.scroll),c&&(this.targetScroll=t),i||this.emit(),i&&(this.reset(),this.emit(),null==h||h(this),this.userData={},this.preventNextNativeScrollEvent())}})}}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame((()=>{this._preventNextNativeScrollEvent=!1}))}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.__experimental__naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?"x":"y"]}get isHorizontal(){return"horizontal"===this.options.orientation}get actualScroll(){return this.isHorizontal?this.rootElement.scrollLeft:this.rootElement.scrollTop}get scroll(){return this.options.infinite?function modulo(t,i){return(t%i+i)%i}(this.animatedScroll,this.limit):this.animatedScroll}get progress(){return 0===this.limit?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(t){this._isScrolling!==t&&(this._isScrolling=t,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(t){this._isStopped!==t&&(this._isStopped=t,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(t){this._isLocked!==t&&(this._isLocked=t,this.updateClassName())}get isSmooth(){return"smooth"===this.isScrolling}get className(){let t="lenis";return this.isStopped&&(t+=" lenis-stopped"),this.isLocked&&(t+=" lenis-locked"),this.isScrolling&&(t+=" lenis-scrolling"),"smooth"===this.isScrolling&&(t+=" lenis-smooth"),t}updateClassName(){this.cleanUpClassName(),this.rootElement.className=`${this.rootElement.className} ${this.className}`.trim()}cleanUpClassName(){this.rootElement.className=this.rootElement.className.replace(/lenis(-\w+)?/g,"").trim()}}}));
+</script>
+<script>
+(() => {
+  const D = document, H = D.documentElement; if (!H.classList.contains('mo')) return;
+  const $ = id => D.getElementById(id), $$ = (s, r = D) => [...r.querySelectorAll(s)];
+  const FINE = matchMedia('(pointer: fine)').matches, SMALL = innerWidth < 760;
+  let READY = false; const onReady = [];
+  const ready = () => { if (READY) return; READY = true; onReady.forEach(f => f()); };
+  const inView = el => { const r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
+
+  /* ---------- smooth scroll ---------- */
+  let lenis = null;
+  try {
+    if (FINE && window.Lenis) {
+      lenis = new Lenis({lerp: .085, smoothWheel: true, wheelMultiplier: .95});
+      window.avLenis = lenis;
+      const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf);
+      $$('.panel, .srch, .mnav, #srchRes, .reader').forEach(e => e.setAttribute('data-lenis-prevent', ''));
+      new MutationObserver(() => D.body.style.overflow === 'hidden' ? lenis.stop() : lenis.start()).observe(D.body, {attributes: true, attributeFilter: ['style']});
+    }
+  } catch(e) { lenis = null; }
+
+  /* ---------- the veil between pages ---------- */
+  const veil = $('veil'), veilT = $('veilT');
+  const NAMES = {'index.html': 'Avenor', '': 'Avenor', 'shop.html': 'The Collection', 'story.html': 'Our Story', 'ingredients.html': 'Ingredients', 'journal.html': 'Journal', 'contact.html': 'Contact'};
+  window.avLeave = href => {
+    const f = new URL(href, location.href).pathname.split('/').pop();
+    const name = NAMES[f] || 'Avenor';
+    veilT.textContent = name;
+    try { sessionStorage.setItem('avenor-nav', name); } catch(e) {}
+    veil.classList.remove('lift'); veil.classList.add('go');
+    setTimeout(() => location.href = href, 1000);
+  };
+  addEventListener('pageshow', e => { if (e.persisted) { veil.classList.remove('go'); H.classList.remove('leaving'); } });
+  if (H.classList.contains('arr')) {
+    veilT.textContent = window.__veil || 'Avenor';
+    requestAnimationFrame(() => requestAnimationFrame(() => { veil.classList.add('lift'); setTimeout(ready, 520); setTimeout(() => { H.classList.remove('arr'); veil.classList.remove('lift'); }, 1700); }));
+  } else if (H.classList.contains('ql') && $('ql')) {
+    const q = $('ql'); new MutationObserver(() => { if (q.classList.contains('out')) setTimeout(ready, 260); }).observe(q, {attributes: true});
+    setTimeout(ready, 7000);
+  } else requestAnimationFrame(ready);
+
+  /* ---------- split headings into masked words ---------- */
+  function split(el, cls, wrap){
+    let i = 0;
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const parts = n.textContent.split(/(\s+)/), frag = D.createDocumentFragment();
+        parts.forEach(p => { if (!p) return; if (/^\s+$/.test(p)) { frag.appendChild(D.createTextNode(p)); return; } frag.appendChild(wrap(p, i++)); });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR' && !n.classList.contains('w')) walk(n);
+    });
+    walk(el); el.classList.add(cls); return i;
+  }
+  const maskWord = (t, i) => { const w = D.createElement('span'); w.className = 'w'; const s = D.createElement('span'); s.className = 'wi'; s.style.setProperty('--i', i); s.textContent = t; w.appendChild(s); return w; };
+  const plainWord = cls => (t, i) => { const s = D.createElement('span'); s.className = cls; s.style.setProperty('--i', i); s.textContent = t; return s; };
+  window.avChars = el => { const t = el.textContent; el.textContent = ''; [...t].forEach((c, i) => { if (c === ' ') { el.appendChild(D.createTextNode(' ')); return; } const s = D.createElement('span'); s.className = 'ch'; s.style.setProperty('--i', i); s.textContent = c; el.appendChild(s); }); };
+
+  const heads = $$('main h1, main h2, .manifesto blockquote').filter(e => !e.closest('.panel, .reader, .match, [hidden]'));
+  heads.forEach(h => split(h, 'sp', maskWord));
+  $$('.slide q').forEach(q => split(q, 'qs', plainWord('qw')));
+
+  /* ink-fill paragraphs */
+  const inks = $$('[data-ink]').map(el => { split(el, 'iks', plainWord('ik')); return {el, words: $$('.ik', el), n: -1}; });
+
+  /* images unveil */
+  const UV = '.pcard .ph, .split .img, .wideimg, .three .ph, .post .ph, .feat .img, .feature .ph, .tl li img, .ilist .view, .film-win';
+  const uvs = $$(UV);
+  uvs.forEach(el => { const p = el.closest('.pcard, .post, .it'); if (p && p.parentElement) el.style.setProperty('--d', ([...p.parentElement.children].indexOf(p) % 4) * 130 + 'ms'); el.classList.add('uv'); });
+  const film = D.querySelector('.film-win'); if (film) film.style.setProperty('--d', '420ms');
+
+  /* parallax inside frames */
+  const plx = $$('.split .img, .wideimg, .feat .img, .feature .ph').map(box => { box.classList.add('plx'); return {box, img: box.querySelector('img'), on: false}; }).filter(o => o.img);
+
+  /* hairlines and groups */
+  const lds = $$('.steps, .pyramid, .ilist ol, .faq'); lds.forEach(e => e.classList.add('ld'));
+  const stgs = $$('.steps, .pyramid, .services, .ilist ol, .faq, .fcols, .ways');
+  stgs.forEach(g => { [...g.children].forEach((c, i) => c.style.setProperty('--i', i)); g.classList.add('stg'); g.removeAttribute('data-rv'); g.classList.remove('pre'); [...g.querySelectorAll('[data-rv]')].forEach(c => { c.removeAttribute('data-rv'); c.classList.remove('pre', 'in'); }); });
+
+  /* hero companions */
+  const fades = $$('.film-head .side > *, .film-foot > *, .phead .lede, .phead .label');
+  fades.forEach((e, i) => { e.classList.add('fade'); e.style.setProperty('--d', (500 + i * 120) + 'ms'); });
+
+  /* footer wordmark letters */
+  const fw = D.querySelector('.fword');
+  if (fw) { const t = fw.textContent; fw.textContent = ''; [...t].forEach((c, i) => { const s = D.createElement('span'); s.className = 'fl'; s.style.setProperty('--i', i); s.textContent = c; fw.appendChild(s); }); }
+
+  /* reveal everything when it arrives */
+  const targets = [...heads, ...uvs, ...lds, ...stgs, ...fades, ...(fw ? [fw] : [])];
+  onReady.push(() => {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin: '0px 0px -9% 0px'});
+    targets.forEach(t => inView(t) ? t.classList.add('in') : io.observe(t));
+    /* safety: never leave anything hidden */
+    setTimeout(() => targets.forEach(t => { if (t.getBoundingClientRect().top < innerHeight) t.classList.add('in'); }), 2500);
+  });
+
+  /* ---------- text roll on navigation and buttons ---------- */
+  $$('.top nav.l a, .top .r > a:not([data-bag]), .top .r > button, .btn').forEach(a => {
+    if (a.querySelector('.roll') || a.children.length) return;
+    const t = a.textContent.trim(); if (!t) return;
+    a.innerHTML = `<span class="roll"><span>${t.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]))}</span></span>`;
+  });
+
+  /* header progress line */
+  const top = D.querySelector('header.top'); const sp = D.createElement('i'); sp.className = 'sprog'; top && top.appendChild(sp);
+
+  /* ---------- notes marquee ---------- */
+  const mq = D.querySelector('.mq-t'); let mqX = 0, mqVis = false, mqW = 0, vel = 0, lastY = scrollY, dir = 1;
+  if (mq) { mq.innerHTML += mq.innerHTML; mqW = mq.scrollWidth / 2; new IntersectionObserver(es => { mqVis = es[0].isIntersecting; if (mqVis) kick(); }).observe(mq); addEventListener('resize', () => mqW = mq.scrollWidth / 2); }
+
+  /* ---------- counters ---------- */
+  $$('.stat b').forEach(b => {
+    const m = b.textContent.match(/^(\d+)(.*)$/); if (!m) return; const n = +m[1], suf = m[2]; b.textContent = '0' + suf;
+    const io = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io.disconnect(); const t0 = performance.now();
+      const step = now => { const k = Math.min(1, (now - t0) / 1800), e = 1 - Math.pow(1 - k, 4); b.textContent = Math.round(n * e) + suf; if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }, {threshold: .6});
+    io.observe(b);
+  });
+
+  /* ---------- one loop for everything scroll-linked ---------- */
+  let raf = 0, last = performance.now();
+  const plxIO = new IntersectionObserver(es => es.forEach(e => { const o = plx.find(p => p.box === e.target); if (o) o.on = e.isIntersecting; }), {rootMargin: '10% 0px'});
+  plx.forEach(o => plxIO.observe(o.box));
+  function frame(now){
+    raf = 0; const dt = Math.min(64, now - last); last = now;
+    const y = scrollY, dy = y - lastY; lastY = y; if (dy) dir = dy > 0 ? 1 : -1;
+    vel += (dy - vel) * .12;
+    const vh = innerHeight;
+    /* page progress */
+    const max = D.documentElement.scrollHeight - vh; sp.style.setProperty('--sp', max > 0 ? (y / max).toFixed(4) : 0);
+    /* parallax */
+    for (const o of plx) { if (!o.on) continue; const r = o.box.getBoundingClientRect(), ex = (o.img.offsetHeight - r.height) / 2; const p = Math.max(-1, Math.min(1, ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2))); o.img.style.translate = `0 ${(-ex - p * ex).toFixed(1)}px`; }
+    /* ink fill */
+    for (const k of inks) { const r = k.el.getBoundingClientRect(); if (r.bottom < -50 || r.top > vh + 50) continue; const p = Math.max(0, Math.min(1, (vh * .86 - r.top) / (r.height + vh * .32))); const n = Math.round(p * k.words.length); if (n !== k.n) { k.words.forEach((w, i) => w.classList.toggle('on', i < n)); k.n = n; } }
+    /* footer wordmark breathes */
+    if (fw) { const r = fw.getBoundingClientRect(); if (r.top < vh) { const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * .6))); fw.style.letterSpacing = (.48 - .16 * p).toFixed(3) + 'em'; fw.style.paddingLeft = fw.style.letterSpacing; } }
+    /* marquee */
+    let keep = Math.abs(vel) > .05;
+    if (mq && mqVis) { mqX -= (dt * .03 + Math.abs(vel) * .5) * dir; if (mqX <= -mqW) mqX += mqW; if (mqX > 0) mqX -= mqW; mq.style.transform = `translate3d(${mqX.toFixed(1)}px,0,0)`; keep = true; }
+    if (keep) raf = requestAnimationFrame(frame); else vel = 0;
+  }
+  function kick(){ if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  addEventListener('scroll', kick, {passive: true}); addEventListener('resize', kick); kick();
+
+  /* ---------- ingredient preview wipe keeps the previous image beneath ---------- */
+  const view = D.querySelector('.ilist .view');
+  if (view) { let prev = view.querySelector('img.on'); new MutationObserver(() => { const now = view.querySelector('img.on'); if (now && now !== prev) { $$('img', view).forEach(i => i.classList.remove('was')); prev && prev.classList.add('was'); prev = now; } }).observe(view, {subtree: true, attributes: true, attributeFilter: ['class']}); }
+
+  /* ---------- shop: cards glide to their new places ---------- */
+  window.avFlip = (box, fn) => {
+    const before = new Map([...box.children].filter(c => !c.hidden).map(c => [c, c.getBoundingClientRect()]));
+    fn();
+    [...box.children].filter(c => !c.hidden).forEach((c, i) => {
+      const a = before.get(c), b = c.getBoundingClientRect();
+      if (a) { const dx = a.left - b.left, dy = a.top - b.top; if (dx || dy) c.animate([{transform: `translate(${dx}px,${dy}px)`}, {transform: 'none'}], {duration: 900, easing: 'cubic-bezier(.16,.84,.24,1)'}); }
+      else c.animate([{opacity: 0, transform: 'translateY(28px)'}, {opacity: 1, transform: 'none'}], {duration: 900, delay: i * 70, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards'});
+    });
+  };
+
+  /* ---------- a drop of scent carries each bottle to the bag ---------- */
+  let lastPt = null;
+  addEventListener('pointerdown', e => lastPt = {x: e.clientX, y: e.clientY, t: performance.now()}, true);
+  const DROP = '<svg viewBox="0 0 14 20"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1c98a"/><stop offset=".55" stop-color="#b47a35"/><stop offset="1" stop-color="#6e4518"/></linearGradient></defs><path d="M7 0C7 0 0 9 0 13a7 7 0 0 0 14 0C14 9 7 0 7 0Z" fill="url(#dg)"/><ellipse cx="4.6" cy="12.5" rx="1.6" ry="2.6" fill="#fff" opacity=".55"/></svg>';
+  const origAdd = window.addToBag;
+  window.addToBag = (...a) => {
+    origAdd(...a);
+    const tgt = $$('.top .bagc').find(b => b.offsetParent); if (!tgt) return;
+    const from = lastPt && performance.now() - lastPt.t < 1500 ? lastPt : {x: innerWidth / 2, y: innerHeight * .6};
+    const tr = tgt.getBoundingClientRect(), to = {x: tr.left + tr.width / 2, y: tr.top + tr.height / 2};
+    const d = D.createElement('div'); d.className = 'drop'; d.innerHTML = `<i>${DROP}</i>`; D.body.appendChild(d);
+    const P1 = {x: from.x + (to.x - from.x) * .08, y: from.y - 140}, P2 = {x: to.x - (to.x - from.x) * .1, y: to.y + 220};
+    const bz = (t, a, b, c, d) => { const u = 1 - t; return u*u*u*a + 3*u*u*t*b + 3*u*t*t*c + t*t*t*d; };
+    const ease = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+    const kf = []; for (let s = 0; s <= 24; s++) { const k = s / 24, t = ease(k); kf.push({offset: k, transform: `translate(${bz(t, from.x, P1.x, P2.x, to.x).toFixed(1)}px,${bz(t, from.y, P1.y, P2.y, to.y).toFixed(1)}px) scale(${(k < .12 ? .3 + k / .12 * .9 : 1.2 - (k - .12) * .8).toFixed(3)})`, opacity: k < .08 ? k / .08 : 1}); }
+    const dur = 1150;
+    d.firstChild.style.transform = 'none';
+    const anim = d.animate(kf, {duration: dur, fill: 'forwards'});
+    anim.onfinish = () => { d.remove(); const r = D.createElement('div'); r.className = 'ripple'; r.style.left = to.x + 'px'; r.style.top = to.y + 'px'; D.body.appendChild(r); setTimeout(() => r.remove(), 1100);
+      $$('.bagc').forEach(b => { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }); };
+  };
+
+  /* ---------- scent mist: a soft spray that follows the hand over images ---------- */
+  const cv = $('mist'), cx = cv.getContext('2d'); const parts = []; let mraf = 0, mw = 0, mh = 0;
+  const TINT = {amber: '#eab06a', blush: '#f4bcc4', forest: '#c3d39a', ocean: '#b2dcee', set: '#f1e4c6', film: '#f6dcae'};
+  const sprites = {};
+  const sprite = c => { if (sprites[c]) return sprites[c]; const s = D.createElement('canvas'); s.width = s.height = 128; const g = s.getContext('2d'), rg = g.createRadialGradient(64, 64, 0, 64, 64, 64); rg.addColorStop(0, c); rg.addColorStop(.35, c + 'aa'); rg.addColorStop(1, c + '00'); g.fillStyle = rg; g.fillRect(0, 0, 128, 128); return sprites[c] = s; };
+  const size = () => { mw = cv.width = Math.round(innerWidth * .75); mh = cv.height = Math.round(innerHeight * .75); };
+  size(); addEventListener('resize', size);
+  const spawn = (x, y, c, vx = 0, vy = 0, big = 1, host = null) => { if (parts.length > 160) parts.shift(); parts.push({x, y, vx: vx * .25 + (Math.random() - .5) * .5, vy: vy * .25 - .35 - Math.random() * .5, r: (6 + Math.random() * 10) * big, g: .5 + Math.random() * .7, life: 0, max: 1300 + Math.random() * 1300, a: .3 + Math.random() * .25, c, s: Math.random() * 6.28, host}); if (!mraf) { mlast = performance.now(); mraf = requestAnimationFrame(mloop); } };
+  function burst(x, y, c, n = 28, host = null){ for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + (Math.random() - .5) * 2.2, v = 1.5 + Math.random() * 4; spawn(x, y, c, Math.cos(a) * v * 3, Math.sin(a) * v * 3, 1.3, host); } }
+  let mlast = 0;
+  function mloop(now){
+    const dt = Math.min(48, now - mlast) / 16.7; mlast = now; mraf = 0;
+    cx.clearRect(0, 0, mw, mh); const k = mw / innerWidth; const rects = new Map(); const rectOf = h => { if (!rects.has(h)) rects.set(h, h.getBoundingClientRect()); return rects.get(h); };
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i]; p.life += dt * 16.7; const t = p.life / p.max; if (t >= 1) { parts.splice(i, 1); continue; }
+      p.s += .03 * dt; p.vx *= .965; p.vy = p.vy * .975 - .012 * dt; p.x += (p.vx + Math.sin(p.s) * .35) * dt; p.y += p.vy * dt; p.r += p.g * dt;
+      const al = p.a * Math.sin(Math.PI * Math.min(1, t * 1.6)) * (1 - t);
+      cx.globalAlpha = Math.max(0, al); const R = p.r * k * 2; if (p.host) { const r = rectOf(p.host); cx.save(); cx.beginPath(); cx.rect(r.left * k, r.top * k, r.width * k, r.height * k); cx.clip(); } cx.drawImage(sprite(p.c), p.x * k - R / 2, p.y * k - R / 2, R, R); if (p.host) cx.restore();
+    }
+    cx.globalAlpha = 1; if (parts.length) mraf = requestAnimationFrame(mloop);
+  }
+  const hostOf = el => el && el.closest && el.closest('.pcard .ph, .film-win, .qv-img, .match img');
+  const mistOf = el => { const m = el && el.closest && el.closest('[data-qv], .film-win, .qv-img'); if (!m || !hostOf(el)) return null; if (m.classList.contains('film-win')) return TINT.film; if (m.classList.contains('qv-img')) return '#f3dcb4'; return TINT[m.dataset.qv] || TINT.film; };
+  let px = 0, py = 0, pt = 0;
+  addEventListener('pointermove', e => { const now = performance.now(); const c = mistOf(e.target); if (c && now - pt > 22) { const vx = e.clientX - px, vy = e.clientY - py; if (Math.abs(vx) + Math.abs(vy) > 2) spawn(e.clientX, e.clientY, c, vx, vy, 1, hostOf(e.target)); pt = now; } px = e.clientX; py = e.clientY; }, {passive: true});
+  addEventListener('pointerdown', e => { const c = mistOf(e.target); if (c) burst(e.clientX, e.clientY, c, 22, hostOf(e.target)); }, {passive: true});
+
+  /* ---------- cursor ---------- */
+  if (FINE && !SMALL) {
+    H.classList.add('cur');
+    const cur = $('cur'), dot = cur.querySelector('.dot'), ring = cur.querySelector('.ring'), lab = $('curT');
+    let mx = -100, my = -100, rx = mx, ry = my, craf = 0, seen = false; cur.classList.add('out');
+    const LABEL = el => { if (el.closest('.film-win')) return 'Scroll'; if (el.closest('[data-qv]:not(button):not(.link)')) return 'View'; if (el.closest('.post, .feature, [data-open]')) return 'Read'; if (el.closest('.ilist li button')) return 'Explore'; return ''; };
+    const loop = () => { rx += (mx - rx) * .17; ry += (my - ry) * .17; ring.style.transform = `translate3d(${rx}px,${ry}px,0)`; craf = Math.abs(mx - rx) + Math.abs(my - ry) > .3 ? requestAnimationFrame(loop) : 0; };
+    addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      mx = e.clientX; my = e.clientY; if (!seen) { rx = mx; ry = my; seen = true; } dot.style.transform = `translate3d(${mx}px,${my}px,0)`; cur.classList.remove('out');
+      state(e.target);
+      if (!craf) craf = requestAnimationFrame(loop);
+    }, {passive: true});
+    function state(t){
+      if (!t || !t.closest) return; const l = LABEL(t);
+      cur.classList.toggle('lab', !!l); if (l) lab.textContent = l;
+      cur.classList.toggle('link', !l && !!t.closest('a, button, select, summary, label, [role=button]'));
+      cur.classList.toggle('text', !!t.closest('input, textarea'));
+    }
+    addEventListener('scroll', () => { if (seen) state(D.elementFromPoint(mx, my)); }, {passive: true});
+    D.addEventListener('pointerleave', () => cur.classList.add('out'));
+    addEventListener('pointerdown', () => cur.classList.add('down')); addEventListener('pointerup', () => cur.classList.remove('down'));
+    /* magnetic */
+    $$('.btn, .quote .ctrl button, .logo, .top .r > *').forEach(el => {
+      el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.style.translate = `${((e.clientX - r.left - r.width / 2) * .22).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * .32).toFixed(1)}px`; });
+      el.addEventListener('pointerleave', () => { el.animate([{translate: el.style.translate || '0 0'}, {translate: '0 0'}], {duration: 700, easing: 'cubic-bezier(.16,.84,.24,1)'}); el.style.translate = ''; });
+    });
+  }
 })();
 </script>
 </body>
