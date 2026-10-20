@@ -472,16 +472,8 @@ footer .mega{transform:translateY(calc(var(--fshade,0) * 120px))}
 }
 
 
-/* ===== signature experiences ===== */
-.b3d{opacity:0;transition:opacity .9s ease}
-.b3d.ready{opacity:1}
+/* ===== sound toggle ===== */
 [hidden]{display:none!important}
-.st-stage canvas,.st-glow{transition:transform 1.3s cubic-bezier(.22,.7,.18,1),background 1.4s}
-.studio.revealed .st-stage canvas{transform:translateX(-27%)}
-.studio.revealed .st-glow{transform:translate(-77%,-50%)}
-.st-legend{transition:opacity .6s}
-.studio.revealed .st-legend{opacity:0}
-/* sound toggle in the header */
 .snd{width:30px;height:28px;display:flex;align-items:center;justify-content:center;gap:2.5px;color:var(--on-dark)}
 .snd i{display:block;width:2px;height:5px;border-radius:1px;background:currentColor;opacity:.7;transition:height .4s var(--ease),opacity .4s}
 .snd.on{color:var(--gold)}
@@ -489,106 +481,6 @@ footer .mega{transform:translateY(calc(var(--fshade,0) * 120px))}
 .snd.on i:nth-child(2){animation-delay:-.35s}.snd.on i:nth-child(3){animation-delay:-.7s}.snd.on i:nth-child(4){animation-delay:-.2s}
 .snd.armed i{opacity:1;height:8px}
 @keyframes eq{0%,100%{height:4px}50%{height:15px}}
-
-/* home: the bottle in your hands */
-.hold{position:relative;overflow:hidden;background:#120a05;min-height:min(100vh,920px);display:flex;align-items:center}
-.hold .hvis{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hold-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(13,10,7,.9) 0%,rgba(13,10,7,.6) 32%,rgba(13,10,7,0) 58%),linear-gradient(0deg,rgba(13,10,7,.55),rgba(13,10,7,0) 26%),linear-gradient(180deg,rgba(13,10,7,.5),rgba(13,10,7,0) 18%)}
-.hold-stage{position:absolute;top:0;bottom:0;right:0;width:min(60%,900px);z-index:1}
-.hold-stage canvas{width:100%;height:100%;display:block;outline:none}
-.hold-stage canvas:focus-visible{outline:1px solid var(--gold);outline-offset:-8px}
-.hold-fallback{position:absolute;top:12%;bottom:12%;left:18%;width:64%;height:76%;object-fit:cover;border-radius:6px;box-shadow:0 40px 80px rgba(0,0,0,.5)}
-.hold-in{position:relative;z-index:2;width:100%;padding-top:120px;padding-bottom:120px;pointer-events:none}
-.hold-copy{max-width:460px;display:flex;flex-direction:column;gap:22px;pointer-events:auto}
-.hold-copy p{color:var(--on-dark-mute)}
-.hold-picks{display:flex;flex-wrap:wrap;gap:8px}
-.hp{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 11px;border-radius:999px;border:1px solid var(--line-dark);font-size:13px;color:var(--on-dark-mute);transition:color .45s var(--ease),background .45s var(--ease),border-color .45s}
-.hp i{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px rgba(255,255,255,.06),0 0 14px var(--c)}
-.hp:hover{color:var(--on-dark);border-color:var(--gold-dim)}
-.hp[aria-pressed="true"]{color:var(--ink);background:var(--on-dark);border-color:var(--on-dark)}
-.hold-notes{font-family:var(--display);font-style:italic;font-size:23px;color:var(--on-dark)!important;transition:opacity .35s}
-.hold-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.hold-link{font-size:13px;letter-spacing:.04em;border-bottom:1px solid var(--gold-dim);padding-bottom:3px;transition:color .3s}
-.hold-link:hover{color:var(--gold)}
-.hold-studio{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px}
-.hold-studio svg{width:14px;height:14px;transition:transform .5s var(--ease)}
-.hold-studio:hover svg{transform:translateX(6px)}
-.hold-hint{position:absolute;z-index:2;right:clamp(24px,6vw,110px);bottom:38px;display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);transition:opacity .7s;pointer-events:none}
-.hold-hint span{position:relative;width:46px;height:1px;background:rgba(201,164,106,.35);overflow:hidden}
-.hold-hint span::after{content:"";position:absolute;top:-1px;left:0;width:10px;height:3px;background:var(--gold);animation:hint 2s ease-in-out infinite}
-@keyframes hint{0%{transform:translateX(-12px)}50%{transform:translateX(46px)}100%{transform:translateX(-12px)}}
-.hold.grabbed .hold-hint,.studio.grabbed .st-hint,.mimg.grabbed .mhint{opacity:0}
-
-/* shop: compose your scent */
-.studio{position:relative;overflow:hidden;background:radial-gradient(70% 80% at 74% 48%,#2a1b0f 0%,#130d08 55%,#0d0a07 100%)}
-.studio-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,80px);align-items:center;padding-top:clamp(80px,9vw,120px);padding-bottom:clamp(80px,9vw,120px)}
-.st-left{display:flex;flex-direction:column;gap:20px;min-width:0}
-.st-left .lead{color:var(--on-dark-mute);max-width:430px}
-.layers3{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:18px}
-.layer{border-top:1px solid var(--line-dark);padding-top:16px;transition:border-color .6s}
-.layer.done{border-color:rgba(201,164,106,.5)}
-.lh{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap}
-.lh .no{font-family:var(--display);font-size:20px;color:var(--gold);font-variant-numeric:tabular-nums}
-.lh b{font-family:var(--display);font-weight:400;font-size:23px}
-.lh small{display:block;font-size:12px;color:var(--on-dark-mute)}
-.lh .pick{margin-left:auto;font-family:var(--display);font-style:italic;font-size:18px;color:var(--on-dark-mute);transition:color .5s}
-.layer.done .pick{color:var(--gold)}
-.nrow{display:flex;flex-wrap:wrap;gap:8px}
-.nchip{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 10px;border-radius:999px;border:1px solid var(--line-dark);font-size:13px;color:var(--on-dark-mute);transition:color .4s,background .4s,border-color .4s}
-.nchip i{width:12px;height:12px;border-radius:50%;background:var(--c);transition:transform .5s var(--ease),box-shadow .5s}
-.nchip:hover{color:var(--on-dark);border-color:var(--gold-dim)}
-.nchip:hover i{transform:scale(1.3)}
-.nchip[aria-pressed="true"]{background:rgba(201,164,106,.14);border-color:var(--gold);color:var(--on-dark)}
-.nchip[aria-pressed="true"] i{box-shadow:0 0 0 3px rgba(201,164,106,.25),0 0 16px var(--c)}
-.st-actions{display:flex;align-items:center;gap:22px;margin-top:6px;flex-wrap:wrap}
-.st-actions .btn[disabled]{opacity:.32;pointer-events:none}
-.st-count{font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);font-variant-numeric:tabular-nums}
-.st-reset{font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);border-bottom:1px solid var(--line-dark);padding-bottom:3px;transition:color .3s}
-.st-reset:hover{color:var(--gold)}
-.st-right{position:relative;min-width:0}
-.st-stage{position:relative;height:min(76vh,700px);min-height:500px}
-.st-stage canvas{position:absolute;inset:0;width:100%;height:100%;outline:none;z-index:1}
-.st-glow{position:absolute;left:50%;top:54%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(201,164,106,.22)),rgba(0,0,0,0) 66%);transition:background 1.4s;pointer-events:none}
-.st-legend{position:absolute;left:0;bottom:16px;z-index:2;display:flex;flex-direction:column-reverse;gap:7px;font-size:12px;color:var(--on-dark-mute)}
-.st-legend span{display:flex;align-items:center;gap:9px;animation:legIn .6s var(--ease) both}
-.st-legend i{width:18px;height:3px;border-radius:2px;background:var(--c)}
-@keyframes legIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
-.st-hint{position:absolute;right:0;top:12px;z-index:2;font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);transition:opacity .6s}
-.st-result{position:absolute;right:0;bottom:40px;z-index:3;width:min(310px,100%);background:rgba(19,15,11,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(201,164,106,.32);padding:22px;display:flex;flex-direction:column;gap:6px;animation:resIn .9s var(--ease) both}
-.st-result .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-mute)}
-.st-result h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.25;margin:0}
-.st-result h4{font-family:var(--display);font-weight:400;font-size:34px;line-height:1.05;color:var(--gold);margin:0}
-.st-result p{font-size:13px;color:var(--on-dark-mute);margin:4px 0 0}
-.st-result .r-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.st-result .addbtn{color:var(--on-dark);border-color:var(--gold-dim)}
-@keyframes resIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.cssb{position:absolute;left:50%;bottom:14%;width:180px;height:220px;transform:translateX(-50%);border:2px solid rgba(239,230,216,.5);border-radius:22px;display:flex;flex-direction:column-reverse;padding:12px;gap:0;overflow:hidden}
-.cssb::before{content:"";position:absolute;left:50%;top:-58px;width:70px;height:56px;transform:translateX(-50%);background:linear-gradient(90deg,#9c7a3e,#e3c28a,#9c7a3e);border-radius:6px}
-.cssb .lay{height:0;transition:height 1s var(--ease),background 1s;border-radius:4px}
-
-/* shop quick view: 3D inside its scent scene */
-.modal .mimg{position:relative;overflow:hidden}
-.modal .mimg canvas{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .6s var(--ease);outline:none}
-.modal .mimg.photo canvas,.modal .mimg.photo .mhint{opacity:0;pointer-events:none}
-.mview{position:absolute;left:14px;bottom:14px;z-index:3;display:flex;padding:3px;border-radius:999px;background:rgba(19,15,11,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.mview button{padding:6px 14px;border-radius:999px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,230,216,.75);transition:background .4s,color .4s}
-.mview button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
-.mhint{position:absolute;right:16px;bottom:22px;z-index:3;font-size:11px;letter-spacing:.08em;color:rgba(239,230,216,.75);transition:opacity .5s;pointer-events:none}
-
-@media (max-width:860px){
-  .hold{flex-direction:column;align-items:stretch;min-height:0}
-  .hold-stage{position:relative;width:100%;height:58vh;min-height:360px}
-  .hold-shade{background:linear-gradient(0deg,rgba(13,10,7,.95) 32%,rgba(13,10,7,0) 58%),linear-gradient(180deg,rgba(13,10,7,.5),rgba(13,10,7,0) 16%)}
-  .hold-in{padding-top:0;padding-bottom:70px;margin-top:-40px}
-  .hold-hint{top:calc(58vh - 40px);bottom:auto;right:24px}
-  .studio-in{grid-template-columns:minmax(0,1fr)}
-  .st-right{order:-1}
-  .st-stage{height:54vh;min-height:360px}
-  .st-result{position:relative;width:100%;margin-top:14px}
-  .studio.revealed .st-stage canvas{transform:none}
-  .studio.revealed .st-glow{transform:translate(-50%,-50%)}
-  .studio.revealed .st-legend{opacity:1}
-}
 
 
 /* ===== AVENOR luxe theme ===== */
@@ -607,7 +499,7 @@ body{background:var(--ink)}
 img{max-width:100%}
 
 /* Didone display type */
-h1,h2,h3,.logo,.mega,.hold-notes,.lh b,.st-result h3,.st-result h4,.aside-quote,.manifesto blockquote,.nose blockquote,.vcard blockquote,.slide q,.pick,.mprice,.sub b{font-family:var(--display)}
+h1,h2,h3,.logo,.mega,.aside-quote,.manifesto blockquote,.nose blockquote,.vcard blockquote,.slide q,.pick,.mprice,.sub b{font-family:var(--display)}
 h1,h2{font-weight:400;letter-spacing:-.012em}
 h1 em,h2 em{font-style:italic;font-weight:400}
 .card h3,.prod h3,.ing h3,.post h3,.pc h3,.ms .tx h3,.feat h2,.trow h3,.step h3,.svc h4,.ft h4,.way h3{font-weight:400;letter-spacing:-.005em}
@@ -632,7 +524,7 @@ h1 em,h2 em{font-style:italic;font-weight:400}
 .btn{border-radius:0;padding:15px 30px;letter-spacing:.16em;text-transform:uppercase;font-size:11px}
 .btn::before{background-image:var(--foil);background-size:200% 100%}
 .btn:hover{color:#16110c;border-color:#cfa95e}
-.on-dark .btn,.studio .btn,.hold .btn{border-color:rgba(207,169,94,.6)}
+.on-dark .btn{border-color:rgba(207,169,94,.6)}
 .chip,.fchip,.nchip,.hp,.opt,.sizes,.sizes button,.addbtn,.add,.copy,.topic,.time,.mview,.mview button,.primary,.qty,.ctrl button,.news button,.srch .sugg button,.close,.x,.day{border-radius:0!important}
 .primary{letter-spacing:.16em;text-transform:uppercase;font-size:11px}
 .addbtn{letter-spacing:.12em;text-transform:uppercase;font-size:10.5px}
@@ -664,7 +556,6 @@ footer{background:#060504;border-top:1px solid rgba(207,169,94,.18)}
 /* dark rooms go true black */
 .ingredients,.features,.letter,.finder{background:var(--ink-2)}
 .process{background:linear-gradient(90deg,#0c0907 0%,#1a120a 50%,#0c0907 100%)}
-.hold,.studio{background-color:#080605}
 .years,.cal{background:var(--ink)}
 
 @media (prefers-reduced-motion:reduce){.logo,h2 em,.foil{animation:none}}
@@ -1161,7 +1052,7 @@ addEventListener('scroll', () => requestAnimationFrame(par), {passive:true}); pa
   const D = document, H = D.documentElement;
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const IDX = {"frag": [{"t": "Amber Noir", "s": "Amber \u00b7 Saffron, damask rose, smoked oud", "h": "shop.html#p-amber", "img": "img/amber.webp", "k": "amber warm evening oud saffron rose bold best seller"}, {"t": "Blush Petal", "s": "Floral \u00b7 Lychee, peony, white musk", "h": "shop.html#p-blush", "img": "img/blush.webp", "k": "floral pink peony jasmine romantic day fresh"}, {"t": "Forest Whisper", "s": "Woody \u00b7 Fig leaf, vetiver, cedar", "h": "shop.html#p-forest", "img": "img/forest.webp", "k": "woody green fig vetiver cedar calm new earthy"}, {"t": "Ocean Breeze", "s": "Fresh \u00b7 Sea salt, neroli, driftwood", "h": "shop.html#p-ocean", "img": "img/ocean.webp", "k": "fresh blue sea salt grapefruit neroli clean summer"}, {"t": "The Discovery Set", "s": "Set \u00b7 4 \u00d7 8 ml travel sprays", "h": "shop.html#p-set", "img": "img/set.webp", "k": "gift set sample travel discovery coffret all four"}], "ing": [{"t": "Jasmine", "s": "Heart note \u00b7 Grasse, France", "h": "ingredients.html", "k": "floral flower white"}, {"t": "Vanilla", "s": "Base note \u00b7 Madagascar", "h": "ingredients.html", "k": "sweet warm"}, {"t": "Oud", "s": "Base note \u00b7 Assam, India", "h": "ingredients.html", "k": "wood agarwood resin smoky"}, {"t": "Bergamot", "s": "Top note \u00b7 Calabria, Italy", "h": "ingredients.html", "k": "citrus fresh"}, {"t": "Damask Rose", "s": "Heart note \u00b7 Kazanlak, Bulgaria", "h": "ingredients.html", "k": "rose floral"}, {"t": "Saffron", "s": "Top note \u00b7 Kashmir, India", "h": "ingredients.html", "k": "spice"}, {"t": "Vetiver", "s": "Base note \u00b7 Haiti", "h": "ingredients.html", "k": "earthy grass"}, {"t": "Atlas Cedar", "s": "Base note \u00b7 Middle Atlas, Morocco", "h": "ingredients.html", "k": "wood cedar"}, {"t": "Neroli", "s": "Heart note \u00b7 Nabeul, Tunisia", "h": "ingredients.html", "k": "orange blossom citrus"}, {"t": "Orris", "s": "Heart note \u00b7 Tuscany, Italy", "h": "ingredients.html", "k": "iris powdery"}], "art": [{"t": "The Art of Layering Fragrances", "s": "Rituals \u00b7 5 min", "h": "journal.html#layering", "k": "layer combine two scents"}, {"t": "The Power of Oud", "s": "Ingredients \u00b7 4 min", "h": "journal.html#oud", "k": "oud agarwood"}, {"t": "A Fragrance for Every Season", "s": "Seasons \u00b7 6 min", "h": "journal.html#seasons", "k": "summer winter weather"}, {"t": "Where to Apply Perfume", "s": "Rituals \u00b7 3 min", "h": "journal.html#where", "k": "wrist pulse apply hair"}, {"t": "Before Sunrise in Grasse", "s": "Ingredients \u00b7 3 min", "h": "journal.html#grasse", "k": "jasmine harvest growers"}, {"t": "How to Keep Your Bottle Beautiful", "s": "Rituals \u00b7 3 min", "h": "journal.html#store", "k": "store storage light heat"}], "page": [{"t": "Our Story", "s": "Seven years in the making", "h": "story.html", "k": "about brand history perfumer timeline"}, {"t": "Compose Your Scent", "s": "Build a bottle note by note", "h": "shop.html#studio", "k": "studio quiz finder match recommend help choose blend create"}, {"t": "Shipping & Returns", "s": "Free over $150 \u00b7 30-day returns", "h": "contact.html#faq", "k": "delivery shipping return refund faq"}, {"t": "Book a Consultation", "s": "20 minutes with our fragrance team", "h": "contact.html#consult", "k": "appointment call perfumer advice"}, {"t": "Contact Client Care", "s": "care@avenor.com", "h": "contact.html", "k": "email phone help address atelier mumbai"}, {"t": "Sustainability", "s": "Traceable, small batch, refillable", "h": "story.html#promise", "k": "refill recycle eco promise"}]};
+  const IDX = {"frag": [{"t": "Amber Noir", "s": "Amber \u00b7 Saffron, damask rose, smoked oud", "h": "shop.html#p-amber", "img": "img/amber.webp", "k": "amber warm evening oud saffron rose bold best seller"}, {"t": "Blush Petal", "s": "Floral \u00b7 Lychee, peony, white musk", "h": "shop.html#p-blush", "img": "img/blush.webp", "k": "floral pink peony jasmine romantic day fresh"}, {"t": "Forest Whisper", "s": "Woody \u00b7 Fig leaf, vetiver, cedar", "h": "shop.html#p-forest", "img": "img/forest.webp", "k": "woody green fig vetiver cedar calm new earthy"}, {"t": "Ocean Breeze", "s": "Fresh \u00b7 Sea salt, neroli, driftwood", "h": "shop.html#p-ocean", "img": "img/ocean.webp", "k": "fresh blue sea salt grapefruit neroli clean summer"}, {"t": "The Discovery Set", "s": "Set \u00b7 4 \u00d7 8 ml travel sprays", "h": "shop.html#p-set", "img": "img/set.webp", "k": "gift set sample travel discovery coffret all four"}], "ing": [{"t": "Jasmine", "s": "Heart note \u00b7 Grasse, France", "h": "ingredients.html", "k": "floral flower white"}, {"t": "Vanilla", "s": "Base note \u00b7 Madagascar", "h": "ingredients.html", "k": "sweet warm"}, {"t": "Oud", "s": "Base note \u00b7 Assam, India", "h": "ingredients.html", "k": "wood agarwood resin smoky"}, {"t": "Bergamot", "s": "Top note \u00b7 Calabria, Italy", "h": "ingredients.html", "k": "citrus fresh"}, {"t": "Damask Rose", "s": "Heart note \u00b7 Kazanlak, Bulgaria", "h": "ingredients.html", "k": "rose floral"}, {"t": "Saffron", "s": "Top note \u00b7 Kashmir, India", "h": "ingredients.html", "k": "spice"}, {"t": "Vetiver", "s": "Base note \u00b7 Haiti", "h": "ingredients.html", "k": "earthy grass"}, {"t": "Atlas Cedar", "s": "Base note \u00b7 Middle Atlas, Morocco", "h": "ingredients.html", "k": "wood cedar"}, {"t": "Neroli", "s": "Heart note \u00b7 Nabeul, Tunisia", "h": "ingredients.html", "k": "orange blossom citrus"}, {"t": "Orris", "s": "Heart note \u00b7 Tuscany, Italy", "h": "ingredients.html", "k": "iris powdery"}], "art": [{"t": "The Art of Layering Fragrances", "s": "Rituals \u00b7 5 min", "h": "journal.html#layering", "k": "layer combine two scents"}, {"t": "The Power of Oud", "s": "Ingredients \u00b7 4 min", "h": "journal.html#oud", "k": "oud agarwood"}, {"t": "A Fragrance for Every Season", "s": "Seasons \u00b7 6 min", "h": "journal.html#seasons", "k": "summer winter weather"}, {"t": "Where to Apply Perfume", "s": "Rituals \u00b7 3 min", "h": "journal.html#where", "k": "wrist pulse apply hair"}, {"t": "Before Sunrise in Grasse", "s": "Ingredients \u00b7 3 min", "h": "journal.html#grasse", "k": "jasmine harvest growers"}, {"t": "How to Keep Your Bottle Beautiful", "s": "Rituals \u00b7 3 min", "h": "journal.html#store", "k": "store storage light heat"}], "page": [{"t": "Our Story", "s": "Seven years in the making", "h": "story.html", "k": "about brand history perfumer timeline"}, {"t": "Scent Finder", "s": "Two questions to your signature", "h": "shop.html#finder", "k": "quiz match recommend help choose finder"}, {"t": "Shipping & Returns", "s": "Free over $150 \u00b7 30-day returns", "h": "contact.html#faq", "k": "delivery shipping return refund faq"}, {"t": "Book a Consultation", "s": "20 minutes with our fragrance team", "h": "contact.html#consult", "k": "appointment call perfumer advice"}, {"t": "Contact Client Care", "s": "care@avenor.com", "h": "contact.html", "k": "email phone help address atelier mumbai"}, {"t": "Sustainability", "s": "Traceable, small batch, refillable", "h": "story.html#promise", "k": "refill recycle eco promise"}]};
 
   /* curtains */
   const clearVeil = () => H.classList.remove('intro', 'nav-in');
@@ -1282,7 +1173,7 @@ addEventListener('scroll', () => requestAnimationFrame(par), {passive:true}); pa
     H.classList.add('has-cur');
     const cur = D.getElementById('cur'), ring = cur.querySelector('.cur-ring'), dot = cur.querySelector('.cur-dot'), lab = ring.querySelector('span');
     let mx = -100, my = -100, rx = -100, ry = -100;
-    const LABELS = [['.b3d', 'Turn'], ['.collection .card .ph,.prod .ph', 'View'], ['.post,.fstory,.jlist .card', 'Read'], ['.film-stick', 'Scroll'], ['.mega', 'AVENOR'], ['.fimg', 'Origin'], ['.tier', 'Explore']];
+    const LABELS = [['.collection .card .ph,.prod .ph', 'View'], ['.post,.fstory,.jlist .card', 'Read'], ['.film-stick', 'Scroll'], ['.mega', 'AVENOR'], ['.fimg', 'Origin'], ['.tier', 'Explore']];
     addEventListener('pointermove', e => {
       mx = e.clientX; my = e.clientY; cur.classList.remove('out');
       dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
@@ -1515,7 +1406,7 @@ addEventListener('scroll', () => requestAnimationFrame(par), {passive:true}); pa
   req();
 
   /* gold dust in dark rooms */
-  const DARK = [...D.querySelectorAll('.ingredients,.process,.years,.cta-band,.studio,.letter,.features,.cal,.nose .tx,.consult .tx')];
+  const DARK = [...D.querySelectorAll('.ingredients,.process,.years,.cta-band,.finder,.letter,.features,.cal,.nose .tx,.consult .tx')];
   const sprite = (() => { const s = D.createElement('canvas'); s.width = s.height = 32; const g = s.getContext('2d'), r = g.createRadialGradient(16, 16, 0, 16, 16, 16); r.addColorStop(0, 'rgba(236,200,140,1)'); r.addColorStop(.35, 'rgba(232,196,132,.45)'); r.addColorStop(1, 'rgba(232,196,132,0)'); g.fillStyle = r; g.fillRect(0, 0, 32, 32); return s; })();
   const fields = (LOW ? [] : DARK).map(sec => {
     sec.classList.add('motes');

@@ -511,16 +511,8 @@ footer .mega{transform:translateY(calc(var(--fshade,0) * 120px))}
 }
 
 
-/* ===== signature experiences ===== */
-.b3d{opacity:0;transition:opacity .9s ease}
-.b3d.ready{opacity:1}
+/* ===== sound toggle ===== */
 [hidden]{display:none!important}
-.st-stage canvas,.st-glow{transition:transform 1.3s cubic-bezier(.22,.7,.18,1),background 1.4s}
-.studio.revealed .st-stage canvas{transform:translateX(-27%)}
-.studio.revealed .st-glow{transform:translate(-77%,-50%)}
-.st-legend{transition:opacity .6s}
-.studio.revealed .st-legend{opacity:0}
-/* sound toggle in the header */
 .snd{width:30px;height:28px;display:flex;align-items:center;justify-content:center;gap:2.5px;color:var(--on-dark)}
 .snd i{display:block;width:2px;height:5px;border-radius:1px;background:currentColor;opacity:.7;transition:height .4s var(--ease),opacity .4s}
 .snd.on{color:var(--gold)}
@@ -528,106 +520,6 @@ footer .mega{transform:translateY(calc(var(--fshade,0) * 120px))}
 .snd.on i:nth-child(2){animation-delay:-.35s}.snd.on i:nth-child(3){animation-delay:-.7s}.snd.on i:nth-child(4){animation-delay:-.2s}
 .snd.armed i{opacity:1;height:8px}
 @keyframes eq{0%,100%{height:4px}50%{height:15px}}
-
-/* home: the bottle in your hands */
-.hold{position:relative;overflow:hidden;background:#120a05;min-height:min(100vh,920px);display:flex;align-items:center}
-.hold .hvis{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hold-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(13,10,7,.9) 0%,rgba(13,10,7,.6) 32%,rgba(13,10,7,0) 58%),linear-gradient(0deg,rgba(13,10,7,.55),rgba(13,10,7,0) 26%),linear-gradient(180deg,rgba(13,10,7,.5),rgba(13,10,7,0) 18%)}
-.hold-stage{position:absolute;top:0;bottom:0;right:0;width:min(60%,900px);z-index:1}
-.hold-stage canvas{width:100%;height:100%;display:block;outline:none}
-.hold-stage canvas:focus-visible{outline:1px solid var(--gold);outline-offset:-8px}
-.hold-fallback{position:absolute;top:12%;bottom:12%;left:18%;width:64%;height:76%;object-fit:cover;border-radius:6px;box-shadow:0 40px 80px rgba(0,0,0,.5)}
-.hold-in{position:relative;z-index:2;width:100%;padding-top:120px;padding-bottom:120px;pointer-events:none}
-.hold-copy{max-width:460px;display:flex;flex-direction:column;gap:22px;pointer-events:auto}
-.hold-copy p{color:var(--on-dark-mute)}
-.hold-picks{display:flex;flex-wrap:wrap;gap:8px}
-.hp{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 11px;border-radius:999px;border:1px solid var(--line-dark);font-size:13px;color:var(--on-dark-mute);transition:color .45s var(--ease),background .45s var(--ease),border-color .45s}
-.hp i{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px rgba(255,255,255,.06),0 0 14px var(--c)}
-.hp:hover{color:var(--on-dark);border-color:var(--gold-dim)}
-.hp[aria-pressed="true"]{color:var(--ink);background:var(--on-dark);border-color:var(--on-dark)}
-.hold-notes{font-family:var(--display);font-style:italic;font-size:23px;color:var(--on-dark)!important;transition:opacity .35s}
-.hold-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.hold-link{font-size:13px;letter-spacing:.04em;border-bottom:1px solid var(--gold-dim);padding-bottom:3px;transition:color .3s}
-.hold-link:hover{color:var(--gold)}
-.hold-studio{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px}
-.hold-studio svg{width:14px;height:14px;transition:transform .5s var(--ease)}
-.hold-studio:hover svg{transform:translateX(6px)}
-.hold-hint{position:absolute;z-index:2;right:clamp(24px,6vw,110px);bottom:38px;display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);transition:opacity .7s;pointer-events:none}
-.hold-hint span{position:relative;width:46px;height:1px;background:rgba(201,164,106,.35);overflow:hidden}
-.hold-hint span::after{content:"";position:absolute;top:-1px;left:0;width:10px;height:3px;background:var(--gold);animation:hint 2s ease-in-out infinite}
-@keyframes hint{0%{transform:translateX(-12px)}50%{transform:translateX(46px)}100%{transform:translateX(-12px)}}
-.hold.grabbed .hold-hint,.studio.grabbed .st-hint,.mimg.grabbed .mhint{opacity:0}
-
-/* shop: compose your scent */
-.studio{position:relative;overflow:hidden;background:radial-gradient(70% 80% at 74% 48%,#2a1b0f 0%,#130d08 55%,#0d0a07 100%)}
-.studio-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,80px);align-items:center;padding-top:clamp(80px,9vw,120px);padding-bottom:clamp(80px,9vw,120px)}
-.st-left{display:flex;flex-direction:column;gap:20px;min-width:0}
-.st-left .lead{color:var(--on-dark-mute);max-width:430px}
-.layers3{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:18px}
-.layer{border-top:1px solid var(--line-dark);padding-top:16px;transition:border-color .6s}
-.layer.done{border-color:rgba(201,164,106,.5)}
-.lh{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap}
-.lh .no{font-family:var(--display);font-size:20px;color:var(--gold);font-variant-numeric:tabular-nums}
-.lh b{font-family:var(--display);font-weight:400;font-size:23px}
-.lh small{display:block;font-size:12px;color:var(--on-dark-mute)}
-.lh .pick{margin-left:auto;font-family:var(--display);font-style:italic;font-size:18px;color:var(--on-dark-mute);transition:color .5s}
-.layer.done .pick{color:var(--gold)}
-.nrow{display:flex;flex-wrap:wrap;gap:8px}
-.nchip{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 10px;border-radius:999px;border:1px solid var(--line-dark);font-size:13px;color:var(--on-dark-mute);transition:color .4s,background .4s,border-color .4s}
-.nchip i{width:12px;height:12px;border-radius:50%;background:var(--c);transition:transform .5s var(--ease),box-shadow .5s}
-.nchip:hover{color:var(--on-dark);border-color:var(--gold-dim)}
-.nchip:hover i{transform:scale(1.3)}
-.nchip[aria-pressed="true"]{background:rgba(201,164,106,.14);border-color:var(--gold);color:var(--on-dark)}
-.nchip[aria-pressed="true"] i{box-shadow:0 0 0 3px rgba(201,164,106,.25),0 0 16px var(--c)}
-.st-actions{display:flex;align-items:center;gap:22px;margin-top:6px;flex-wrap:wrap}
-.st-actions .btn[disabled]{opacity:.32;pointer-events:none}
-.st-count{font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);font-variant-numeric:tabular-nums}
-.st-reset{font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);border-bottom:1px solid var(--line-dark);padding-bottom:3px;transition:color .3s}
-.st-reset:hover{color:var(--gold)}
-.st-right{position:relative;min-width:0}
-.st-stage{position:relative;height:min(76vh,700px);min-height:500px}
-.st-stage canvas{position:absolute;inset:0;width:100%;height:100%;outline:none;z-index:1}
-.st-glow{position:absolute;left:50%;top:54%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(201,164,106,.22)),rgba(0,0,0,0) 66%);transition:background 1.4s;pointer-events:none}
-.st-legend{position:absolute;left:0;bottom:16px;z-index:2;display:flex;flex-direction:column-reverse;gap:7px;font-size:12px;color:var(--on-dark-mute)}
-.st-legend span{display:flex;align-items:center;gap:9px;animation:legIn .6s var(--ease) both}
-.st-legend i{width:18px;height:3px;border-radius:2px;background:var(--c)}
-@keyframes legIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
-.st-hint{position:absolute;right:0;top:12px;z-index:2;font-size:12px;letter-spacing:.06em;color:var(--on-dark-mute);transition:opacity .6s}
-.st-result{position:absolute;right:0;bottom:40px;z-index:3;width:min(310px,100%);background:rgba(19,15,11,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(201,164,106,.32);padding:22px;display:flex;flex-direction:column;gap:6px;animation:resIn .9s var(--ease) both}
-.st-result .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-mute)}
-.st-result h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.25;margin:0}
-.st-result h4{font-family:var(--display);font-weight:400;font-size:34px;line-height:1.05;color:var(--gold);margin:0}
-.st-result p{font-size:13px;color:var(--on-dark-mute);margin:4px 0 0}
-.st-result .r-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.st-result .addbtn{color:var(--on-dark);border-color:var(--gold-dim)}
-@keyframes resIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.cssb{position:absolute;left:50%;bottom:14%;width:180px;height:220px;transform:translateX(-50%);border:2px solid rgba(239,230,216,.5);border-radius:22px;display:flex;flex-direction:column-reverse;padding:12px;gap:0;overflow:hidden}
-.cssb::before{content:"";position:absolute;left:50%;top:-58px;width:70px;height:56px;transform:translateX(-50%);background:linear-gradient(90deg,#9c7a3e,#e3c28a,#9c7a3e);border-radius:6px}
-.cssb .lay{height:0;transition:height 1s var(--ease),background 1s;border-radius:4px}
-
-/* shop quick view: 3D inside its scent scene */
-.modal .mimg{position:relative;overflow:hidden}
-.modal .mimg canvas{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .6s var(--ease);outline:none}
-.modal .mimg.photo canvas,.modal .mimg.photo .mhint{opacity:0;pointer-events:none}
-.mview{position:absolute;left:14px;bottom:14px;z-index:3;display:flex;padding:3px;border-radius:999px;background:rgba(19,15,11,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.mview button{padding:6px 14px;border-radius:999px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,230,216,.75);transition:background .4s,color .4s}
-.mview button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
-.mhint{position:absolute;right:16px;bottom:22px;z-index:3;font-size:11px;letter-spacing:.08em;color:rgba(239,230,216,.75);transition:opacity .5s;pointer-events:none}
-
-@media (max-width:860px){
-  .hold{flex-direction:column;align-items:stretch;min-height:0}
-  .hold-stage{position:relative;width:100%;height:58vh;min-height:360px}
-  .hold-shade{background:linear-gradient(0deg,rgba(13,10,7,.95) 32%,rgba(13,10,7,0) 58%),linear-gradient(180deg,rgba(13,10,7,.5),rgba(13,10,7,0) 16%)}
-  .hold-in{padding-top:0;padding-bottom:70px;margin-top:-40px}
-  .hold-hint{top:calc(58vh - 40px);bottom:auto;right:24px}
-  .studio-in{grid-template-columns:minmax(0,1fr)}
-  .st-right{order:-1}
-  .st-stage{height:54vh;min-height:360px}
-  .st-result{position:relative;width:100%;margin-top:14px}
-  .studio.revealed .st-stage canvas{transform:none}
-  .studio.revealed .st-glow{transform:translate(-50%,-50%)}
-  .studio.revealed .st-legend{opacity:1}
-}
 
 
 /* ===== AVENOR luxe theme ===== */
@@ -646,7 +538,7 @@ body{background:var(--ink)}
 img{max-width:100%}
 
 /* Didone display type */
-h1,h2,h3,.logo,.mega,.hold-notes,.lh b,.st-result h3,.st-result h4,.aside-quote,.manifesto blockquote,.nose blockquote,.vcard blockquote,.slide q,.pick,.mprice,.sub b{font-family:var(--display)}
+h1,h2,h3,.logo,.mega,.aside-quote,.manifesto blockquote,.nose blockquote,.vcard blockquote,.slide q,.pick,.mprice,.sub b{font-family:var(--display)}
 h1,h2{font-weight:400;letter-spacing:-.012em}
 h1 em,h2 em{font-style:italic;font-weight:400}
 .card h3,.prod h3,.ing h3,.post h3,.pc h3,.ms .tx h3,.feat h2,.trow h3,.step h3,.svc h4,.ft h4,.way h3{font-weight:400;letter-spacing:-.005em}
@@ -671,7 +563,7 @@ h1 em,h2 em{font-style:italic;font-weight:400}
 .btn{border-radius:0;padding:15px 30px;letter-spacing:.16em;text-transform:uppercase;font-size:11px}
 .btn::before{background-image:var(--foil);background-size:200% 100%}
 .btn:hover{color:#16110c;border-color:#cfa95e}
-.on-dark .btn,.studio .btn,.hold .btn{border-color:rgba(207,169,94,.6)}
+.on-dark .btn{border-color:rgba(207,169,94,.6)}
 .chip,.fchip,.nchip,.hp,.opt,.sizes,.sizes button,.addbtn,.add,.copy,.topic,.time,.mview,.mview button,.primary,.qty,.ctrl button,.news button,.srch .sugg button,.close,.x,.day{border-radius:0!important}
 .primary{letter-spacing:.16em;text-transform:uppercase;font-size:11px}
 .addbtn{letter-spacing:.12em;text-transform:uppercase;font-size:10.5px}
@@ -703,7 +595,6 @@ footer{background:#060504;border-top:1px solid rgba(207,169,94,.18)}
 /* dark rooms go true black */
 .ingredients,.features,.letter,.finder{background:var(--ink-2)}
 .process{background:linear-gradient(90deg,#0c0907 0%,#1a120a 50%,#0c0907 100%)}
-.hold,.studio{background-color:#080605}
 .years,.cal{background:var(--ink)}
 
 @media (prefers-reduced-motion:reduce){.logo,h2 em,.foil{animation:none}}
@@ -1019,28 +910,21 @@ html.preload .chars .c{animation-play-state:paused}
   </div>
 </section>
 
-<section class="studio on-dark band" id="studio" aria-label="Compose your scent">
-  <div class="wrap studio-in">
-    <div class="st-left">
-      <div class="eyebrow">Compose your scent</div>
-      <h2>Build a Bottle,<br>Note by Note</h2>
-      <p class="lead">Choose one note for each layer of the pyramid. Watch your bottle fill, then discover which AVENOR fragrance your blend is closest to.</p>
-      <ol class="layers3">
-        <li class="layer" data-layer="top"><div class="lh"><span class="no">01</span><div><b>Top note</b><small>The first impression · 0 to 15 min</small></div><span class="pick" id="p-top">Choose one</span></div><div class="nrow" id="n-top"></div></li>
-        <li class="layer" data-layer="heart"><div class="lh"><span class="no">02</span><div><b>Heart note</b><small>The character · 15 min to 3 h</small></div><span class="pick" id="p-heart">Choose one</span></div><div class="nrow" id="n-heart"></div></li>
-        <li class="layer" data-layer="base"><div class="lh"><span class="no">03</span><div><b>Base note</b><small>The memory it leaves · 3 h and beyond</small></div><span class="pick" id="p-base">Choose one</span></div><div class="nrow" id="n-base"></div></li>
-      </ol>
-      <div class="st-actions"><button type="button" class="btn" id="stReveal" disabled>Reveal My Match <svg><use href="#arr"/></svg></button><span class="st-count" id="stCount" role="status">0 of 3 layers</span><button type="button" class="st-reset" id="stReset">Start again</button></div>
+<section class="finder on-dark band" id="finder">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Scent finder</div>
+      <h2>Find Your<br>Signature</h2>
+      <p class="lead">Answer two questions and we'll point you to the bottle that fits. Change your answers any time.</p>
     </div>
-    <div class="st-right">
-      <div class="st-stage">
-        <div class="st-glow"></div>
-        <canvas class="b3d" id="stB3d" tabindex="0" role="img" aria-label="Your blend in a 3D AVENOR bottle. Drag to turn it."></canvas>
-        <div class="cssb" id="stCss" hidden><div class="lay"></div><div class="lay"></div><div class="lay"></div></div>
-        <div class="st-legend" id="stLegend" aria-live="polite"></div>
-        <div class="st-hint" aria-hidden="true">Drag to turn</div>
-      </div>
-      <div class="st-result" id="stResult" role="status" hidden></div>
+    <div class="q">
+      <fieldset><legend>How should it feel?</legend><div class="opts" data-q="mood">
+        <button class="opt" data-v="warm" aria-pressed="true">Warm &amp; enveloping</button><button class="opt" data-v="soft" aria-pressed="false">Soft &amp; romantic</button><button class="opt" data-v="calm" aria-pressed="false">Calm &amp; grounded</button><button class="opt" data-v="fresh" aria-pressed="false">Clean &amp; bright</button>
+      </div></fieldset>
+      <fieldset><legend>When will you wear it?</legend><div class="opts" data-q="when">
+        <button class="opt" data-v="day" aria-pressed="false">Daytime</button><button class="opt" data-v="night" aria-pressed="true">Evenings</button><button class="opt" data-v="all" aria-pressed="false">Every day</button>
+      </div></fieldset>
+      <div class="match" id="match"></div>
     </div>
   </div>
 </section>
@@ -1078,7 +962,7 @@ html.preload .chars .c{animation-play-state:paused}
 <div class="scrim" id="scrim"></div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
   <button class="x" id="mClose" aria-label="Close"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l12 12M13 1 1 13"/></svg></button>
-  <div class="mimg" id="mImg"><canvas id="mVis" aria-hidden="true"></canvas><canvas class="b3d" id="mB3d" tabindex="0" role="img" aria-label="This fragrance in 3D. Drag to turn it."></canvas><div class="mview" role="group" aria-label="View"><button type="button" data-v="3d" aria-pressed="true">3D</button><button type="button" data-v="photo" aria-pressed="false">Photo</button></div><span class="mhint">Drag to turn</span></div>
+  <div class="mimg" id="mImg"></div>
   <div class="mbody">
     <div class="eyebrow" id="mFam" style="color:var(--gold-dim)"></div>
     <h2 id="mTitle"></h2>
@@ -1232,7 +1116,6 @@ let mp = null, mml = 50, mq = 1;
 function openModal(id){
   mp = PRODUCTS.find(p => p.id === id); mml = mp.fixed ? 0 : state.ml; mq = 1;
   $('mImg').style.backgroundImage = `url(${mp.img})`;
-  window.expModal && expModal(mp);
   $('mFam').textContent = mp.fixed ? 'Discovery coffret' : mp.famLabel + ' · Eau de parfum';
   $('mTitle').textContent = mp.name; $('mTag').textContent = mp.tag; $('mDesc').textContent = mp.desc;
   $('mPyr').innerHTML = Object.entries(mp.notes).map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
@@ -1249,6 +1132,20 @@ $('qMinus').onclick = () => { mq = Math.max(1, mq - 1); updM(); };
 $('qPlus').onclick = () => { mq = Math.min(9, mq + 1); updM(); };
 $('mAdd').onclick = () => { addToBag(mp, mml, mq); hideAll(); };
 
+/* scent finder */
+const ans = {mood:'warm', when:'night'};
+document.querySelectorAll('.opts').forEach(g => g.addEventListener('click', e => {
+  const b = e.target.closest('.opt'); if (!b) return;
+  ans[g.dataset.q] = b.dataset.v; g.querySelectorAll('.opt').forEach(o => o.setAttribute('aria-pressed', o === b)); match();
+}));
+function match(){
+  const scored = PRODUCTS.filter(p => !p.fixed).map(p => ({p, s:(p.mood === ans.mood ? 2 : 0) + (p.when === ans.when || p.when === 'all' || ans.when === 'all' ? 1 : 0)})).sort((a,b) => b.s - a.s);
+  const p = scored[0].p, m = $('match');
+  m.innerHTML = `<img src="${p.img}" alt=""><div><div class="k">Your match</div><h3>${p.name}</h3><p>${p.line}</p></div><button class="addbtn" data-open="${p.id}" style="color:var(--on-dark);border-color:var(--gold-dim)">View <svg><use href="#arr"/></svg></button>`;
+  m.classList.add('flash'); setTimeout(() => m.classList.remove('flash'), 700);
+}
+$('match').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openModal(b.dataset.open); });
+match();
 function fromHash(){ const h = location.hash; if (h === '#bag') setTimeout(() => show(drawer), 400); const m = h.match(/^#p-(\w+)$/); if (m && PRODUCTS.some(p => p.id === m[1])) setTimeout(() => openModal(m[1]), 500); }
 fromHash(); addEventListener('hashchange', fromHash);
 
@@ -1285,7 +1182,7 @@ $('news')?.addEventListener('submit', e => {
   const D = document, H = D.documentElement;
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const IDX = {"frag": [{"t": "Amber Noir", "s": "Amber \u00b7 Saffron, damask rose, smoked oud", "h": "shop.html#p-amber", "img": "img/amber.webp", "k": "amber warm evening oud saffron rose bold best seller"}, {"t": "Blush Petal", "s": "Floral \u00b7 Lychee, peony, white musk", "h": "shop.html#p-blush", "img": "img/blush.webp", "k": "floral pink peony jasmine romantic day fresh"}, {"t": "Forest Whisper", "s": "Woody \u00b7 Fig leaf, vetiver, cedar", "h": "shop.html#p-forest", "img": "img/forest.webp", "k": "woody green fig vetiver cedar calm new earthy"}, {"t": "Ocean Breeze", "s": "Fresh \u00b7 Sea salt, neroli, driftwood", "h": "shop.html#p-ocean", "img": "img/ocean.webp", "k": "fresh blue sea salt grapefruit neroli clean summer"}, {"t": "The Discovery Set", "s": "Set \u00b7 4 \u00d7 8 ml travel sprays", "h": "shop.html#p-set", "img": "img/set.webp", "k": "gift set sample travel discovery coffret all four"}], "ing": [{"t": "Jasmine", "s": "Heart note \u00b7 Grasse, France", "h": "ingredients.html", "k": "floral flower white"}, {"t": "Vanilla", "s": "Base note \u00b7 Madagascar", "h": "ingredients.html", "k": "sweet warm"}, {"t": "Oud", "s": "Base note \u00b7 Assam, India", "h": "ingredients.html", "k": "wood agarwood resin smoky"}, {"t": "Bergamot", "s": "Top note \u00b7 Calabria, Italy", "h": "ingredients.html", "k": "citrus fresh"}, {"t": "Damask Rose", "s": "Heart note \u00b7 Kazanlak, Bulgaria", "h": "ingredients.html", "k": "rose floral"}, {"t": "Saffron", "s": "Top note \u00b7 Kashmir, India", "h": "ingredients.html", "k": "spice"}, {"t": "Vetiver", "s": "Base note \u00b7 Haiti", "h": "ingredients.html", "k": "earthy grass"}, {"t": "Atlas Cedar", "s": "Base note \u00b7 Middle Atlas, Morocco", "h": "ingredients.html", "k": "wood cedar"}, {"t": "Neroli", "s": "Heart note \u00b7 Nabeul, Tunisia", "h": "ingredients.html", "k": "orange blossom citrus"}, {"t": "Orris", "s": "Heart note \u00b7 Tuscany, Italy", "h": "ingredients.html", "k": "iris powdery"}], "art": [{"t": "The Art of Layering Fragrances", "s": "Rituals \u00b7 5 min", "h": "journal.html#layering", "k": "layer combine two scents"}, {"t": "The Power of Oud", "s": "Ingredients \u00b7 4 min", "h": "journal.html#oud", "k": "oud agarwood"}, {"t": "A Fragrance for Every Season", "s": "Seasons \u00b7 6 min", "h": "journal.html#seasons", "k": "summer winter weather"}, {"t": "Where to Apply Perfume", "s": "Rituals \u00b7 3 min", "h": "journal.html#where", "k": "wrist pulse apply hair"}, {"t": "Before Sunrise in Grasse", "s": "Ingredients \u00b7 3 min", "h": "journal.html#grasse", "k": "jasmine harvest growers"}, {"t": "How to Keep Your Bottle Beautiful", "s": "Rituals \u00b7 3 min", "h": "journal.html#store", "k": "store storage light heat"}], "page": [{"t": "Our Story", "s": "Seven years in the making", "h": "story.html", "k": "about brand history perfumer timeline"}, {"t": "Compose Your Scent", "s": "Build a bottle note by note", "h": "shop.html#studio", "k": "studio quiz finder match recommend help choose blend create"}, {"t": "Shipping & Returns", "s": "Free over $150 \u00b7 30-day returns", "h": "contact.html#faq", "k": "delivery shipping return refund faq"}, {"t": "Book a Consultation", "s": "20 minutes with our fragrance team", "h": "contact.html#consult", "k": "appointment call perfumer advice"}, {"t": "Contact Client Care", "s": "care@avenor.com", "h": "contact.html", "k": "email phone help address atelier mumbai"}, {"t": "Sustainability", "s": "Traceable, small batch, refillable", "h": "story.html#promise", "k": "refill recycle eco promise"}]};
+  const IDX = {"frag": [{"t": "Amber Noir", "s": "Amber \u00b7 Saffron, damask rose, smoked oud", "h": "shop.html#p-amber", "img": "img/amber.webp", "k": "amber warm evening oud saffron rose bold best seller"}, {"t": "Blush Petal", "s": "Floral \u00b7 Lychee, peony, white musk", "h": "shop.html#p-blush", "img": "img/blush.webp", "k": "floral pink peony jasmine romantic day fresh"}, {"t": "Forest Whisper", "s": "Woody \u00b7 Fig leaf, vetiver, cedar", "h": "shop.html#p-forest", "img": "img/forest.webp", "k": "woody green fig vetiver cedar calm new earthy"}, {"t": "Ocean Breeze", "s": "Fresh \u00b7 Sea salt, neroli, driftwood", "h": "shop.html#p-ocean", "img": "img/ocean.webp", "k": "fresh blue sea salt grapefruit neroli clean summer"}, {"t": "The Discovery Set", "s": "Set \u00b7 4 \u00d7 8 ml travel sprays", "h": "shop.html#p-set", "img": "img/set.webp", "k": "gift set sample travel discovery coffret all four"}], "ing": [{"t": "Jasmine", "s": "Heart note \u00b7 Grasse, France", "h": "ingredients.html", "k": "floral flower white"}, {"t": "Vanilla", "s": "Base note \u00b7 Madagascar", "h": "ingredients.html", "k": "sweet warm"}, {"t": "Oud", "s": "Base note \u00b7 Assam, India", "h": "ingredients.html", "k": "wood agarwood resin smoky"}, {"t": "Bergamot", "s": "Top note \u00b7 Calabria, Italy", "h": "ingredients.html", "k": "citrus fresh"}, {"t": "Damask Rose", "s": "Heart note \u00b7 Kazanlak, Bulgaria", "h": "ingredients.html", "k": "rose floral"}, {"t": "Saffron", "s": "Top note \u00b7 Kashmir, India", "h": "ingredients.html", "k": "spice"}, {"t": "Vetiver", "s": "Base note \u00b7 Haiti", "h": "ingredients.html", "k": "earthy grass"}, {"t": "Atlas Cedar", "s": "Base note \u00b7 Middle Atlas, Morocco", "h": "ingredients.html", "k": "wood cedar"}, {"t": "Neroli", "s": "Heart note \u00b7 Nabeul, Tunisia", "h": "ingredients.html", "k": "orange blossom citrus"}, {"t": "Orris", "s": "Heart note \u00b7 Tuscany, Italy", "h": "ingredients.html", "k": "iris powdery"}], "art": [{"t": "The Art of Layering Fragrances", "s": "Rituals \u00b7 5 min", "h": "journal.html#layering", "k": "layer combine two scents"}, {"t": "The Power of Oud", "s": "Ingredients \u00b7 4 min", "h": "journal.html#oud", "k": "oud agarwood"}, {"t": "A Fragrance for Every Season", "s": "Seasons \u00b7 6 min", "h": "journal.html#seasons", "k": "summer winter weather"}, {"t": "Where to Apply Perfume", "s": "Rituals \u00b7 3 min", "h": "journal.html#where", "k": "wrist pulse apply hair"}, {"t": "Before Sunrise in Grasse", "s": "Ingredients \u00b7 3 min", "h": "journal.html#grasse", "k": "jasmine harvest growers"}, {"t": "How to Keep Your Bottle Beautiful", "s": "Rituals \u00b7 3 min", "h": "journal.html#store", "k": "store storage light heat"}], "page": [{"t": "Our Story", "s": "Seven years in the making", "h": "story.html", "k": "about brand history perfumer timeline"}, {"t": "Scent Finder", "s": "Two questions to your signature", "h": "shop.html#finder", "k": "quiz match recommend help choose finder"}, {"t": "Shipping & Returns", "s": "Free over $150 \u00b7 30-day returns", "h": "contact.html#faq", "k": "delivery shipping return refund faq"}, {"t": "Book a Consultation", "s": "20 minutes with our fragrance team", "h": "contact.html#consult", "k": "appointment call perfumer advice"}, {"t": "Contact Client Care", "s": "care@avenor.com", "h": "contact.html", "k": "email phone help address atelier mumbai"}, {"t": "Sustainability", "s": "Traceable, small batch, refillable", "h": "story.html#promise", "k": "refill recycle eco promise"}]};
 
   /* curtains */
   const clearVeil = () => H.classList.remove('intro', 'nav-in');
@@ -1406,7 +1303,7 @@ $('news')?.addEventListener('submit', e => {
     H.classList.add('has-cur');
     const cur = D.getElementById('cur'), ring = cur.querySelector('.cur-ring'), dot = cur.querySelector('.cur-dot'), lab = ring.querySelector('span');
     let mx = -100, my = -100, rx = -100, ry = -100;
-    const LABELS = [['.b3d', 'Turn'], ['.collection .card .ph,.prod .ph', 'View'], ['.post,.fstory,.jlist .card', 'Read'], ['.film-stick', 'Scroll'], ['.mega', 'AVENOR'], ['.fimg', 'Origin'], ['.tier', 'Explore']];
+    const LABELS = [['.collection .card .ph,.prod .ph', 'View'], ['.post,.fstory,.jlist .card', 'Read'], ['.film-stick', 'Scroll'], ['.mega', 'AVENOR'], ['.fimg', 'Origin'], ['.tier', 'Explore']];
     addEventListener('pointermove', e => {
       mx = e.clientX; my = e.clientY; cur.classList.remove('out');
       dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
@@ -1639,7 +1536,7 @@ $('news')?.addEventListener('submit', e => {
   req();
 
   /* gold dust in dark rooms */
-  const DARK = [...D.querySelectorAll('.ingredients,.process,.years,.cta-band,.studio,.letter,.features,.cal,.nose .tx,.consult .tx')];
+  const DARK = [...D.querySelectorAll('.ingredients,.process,.years,.cta-band,.finder,.letter,.features,.cal,.nose .tx,.consult .tx')];
   const sprite = (() => { const s = D.createElement('canvas'); s.width = s.height = 32; const g = s.getContext('2d'), r = g.createRadialGradient(16, 16, 0, 16, 16, 16); r.addColorStop(0, 'rgba(236,200,140,1)'); r.addColorStop(.35, 'rgba(232,196,132,.45)'); r.addColorStop(1, 'rgba(232,196,132,0)'); g.fillStyle = r; g.fillRect(0, 0, 32, 32); return s; })();
   const fields = (LOW ? [] : DARK).map(sec => {
     sec.classList.add('motes');
@@ -1899,495 +1796,6 @@ $('news')?.addEventListener('submit', e => {
     addEventListener('scroll', () => requestAnimationFrame(read), {passive: true});
   }
   window.avenorSound = {clink, swell, tick, get on(){ return on; }};
-})();
-</script>
-<script>
-/* three.js is loaded only when a bottle is near: from the site itself, with the CDN as a backup */
-window.loadThree = (() => { let p = null; return () => p || (p = new Promise((res, rej) => {
-  if (window.THREE) return res();
-  const srcs = ['vendor/three.min.js', 'https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js'];
-  const next = i => { if (i >= srcs.length) return rej(new Error('three.js unavailable'));
-    const s = document.createElement('script'); s.src = srcs[i]; s.async = true;
-    s.onload = () => window.THREE ? res() : next(i + 1); s.onerror = () => next(i + 1); document.head.appendChild(s); };
-  next(0);
-}).then(() => { if (!window.AvenorBottle) defineAvenorBottle(); })); })();
-function defineAvenorBottle(){
-/* AVENOR 3D bottle: glass body, gold or black cap, label, liquid that stays level and sloshes. */
-(() => {
-  if (!window.THREE) return;
-  const T = window.THREE;
-  if (T.ColorManagement) T.ColorManagement.legacyMode = false;
-  const FRAG = {
-    amber:  {name: 'Amber Noir',     liquid: '#b85a14', cap: 'gold'},
-    blush:  {name: 'Blush Petal',    liquid: '#f19aa0', cap: 'black'},
-    forest: {name: 'Forest Whisper', liquid: '#6c7a22', cap: 'gold'},
-    ocean:  {name: 'Ocean Breeze',   liquid: '#3a8dc8', cap: 'gold'},
-  };
-  window.AVENOR_FRAG = FRAG;
-
-  function webglOK(){ try { const c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch(e) { return false; } }
-
-  function roundedRect(w, h, r){
-    const s = new T.Shape(), x = -w / 2, y = 0;
-    s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r);
-    s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r);
-    s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y);
-    return s;
-  }
-  function extrude(w, h, r, depth, bevel){
-    const g = new T.ExtrudeGeometry(roundedRect(w, h, r), {depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 8, curveSegments: 18});
-    g.translate(0, 0, -depth / 2); g.computeVertexNormals(); return g;
-  }
-  function studioEnv(renderer){
-    const scene = new T.Scene();
-    const room = new T.Mesh(new T.BoxGeometry(1, 1, 1), new T.MeshBasicMaterial({color: 0x0c0907, side: T.BackSide}));
-    room.scale.set(14, 10, 14); scene.add(room);
-    const panel = (w, h, col, x, y, z, ry = 0, rx = 0) => { const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({color: col, side: T.DoubleSide})); m.position.set(x, y, z); m.rotation.set(rx, ry, 0); scene.add(m); };
-    panel(5, 2.4, new T.Color(4.2, 3.6, 2.9), 0, 4.8, 0, 0, Math.PI / 2);      /* overhead softbox, warm */
-    panel(1.2, 7, new T.Color(7, 5.5, 3.6), -6.5, 0.5, 1, Math.PI / 2);   /* left strip, amber */
-    panel(1.0, 7, new T.Color(3.2, 3.8, 5), 6.5, 0.5, -1, -Math.PI / 2);  /* right strip, cool */
-    panel(5, 2, new T.Color(1.6, 1.3, 1), 0, 0.4, -6.5);                  /* back fill */
-    panel(2.2, .6, new T.Color(.7, .6, .5), 0, -2.2, 6.5, Math.PI);       /* front kicker */
-    const pm = new T.PMREMGenerator(renderer); const tex = pm.fromScene(scene, 0.035).texture; pm.dispose(); return tex;
-  }
-  function shadowTex(){
-    const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
-    const g = x.createRadialGradient(64, 64, 0, 64, 64, 64); g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(.6, 'rgba(0,0,0,.18)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-    x.fillStyle = g; x.fillRect(0, 0, 128, 128); const t = new T.CanvasTexture(c); return t;
-  }
-
-  class AvenorBottle {
-    static supported(){ return webglOK(); }
-    constructor(canvas, opts = {}){
-      this.canvas = canvas; this.opts = opts; this.layered = opts.mode === 'layers';
-      const R = this.renderer = new T.WebGLRenderer({canvas, antialias: true, alpha: true, powerPreference: 'high-performance'});
-      R.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
-      R.outputEncoding = T.sRGBEncoding; R.toneMapping = T.ACESFilmicToneMapping; R.toneMappingExposure = 1.0;
-      R.localClippingEnabled = true; R.setClearColor(0x000000, 0);
-      const S = this.scene = new T.Scene(); S.environment = studioEnv(R);
-      this.camera = new T.PerspectiveCamera(30, 1, .1, 60); this.camera.position.set(0, .35, opts.distance || 7.4); this.camera.lookAt(0, .05, 0);
-
-      const key = new T.DirectionalLight(0xffe2b8, 2.4); key.position.set(-3, 4, 5); S.add(key);
-      const rim = new T.DirectionalLight(0xbcd2ff, 1.4); rim.position.set(4, 2, -4); S.add(rim);
-      S.add(new T.HemisphereLight(0xfff1dd, 0x1a120b, .35));
-
-      /* dimensions */
-      const W = 1.5, HB = 1.78, D = .95, BV = .1;
-      this.dims = {W, HB, D, BV};
-      const pivot = this.pivot = new T.Group(); S.add(pivot);
-      const body = this.body = new T.Group(); pivot.add(body);
-      body.position.y = -1.32;
-
-      /* glass, drawn in two passes so the inner walls read as thickness */
-      const gGeo = extrude(W, HB, .17, D, BV);
-      const glassBack = new T.MeshPhysicalMaterial({color: 0xf6efe4, roughness: .1, metalness: 0, transparent: true, opacity: .07, side: T.BackSide, depthWrite: false, envMapIntensity: 1});
-      const glassTint = new T.MeshPhysicalMaterial({color: 0xf6efe4, roughness: .05, metalness: 0, transparent: true, opacity: .06, depthWrite: false, envMapIntensity: 1});
-      /* reflections only, added as light so the glass stays clear */
-      const glassShine = this.glassMat = new T.MeshPhysicalMaterial({color: 0x000000, roughness: .03, metalness: 0, transparent: true, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 2.1, clearcoat: 1, clearcoatRoughness: .02, specularIntensity: 1, ior: 1.52});
-      /* add light without touching the canvas alpha, so the page behind still shows through */
-      Object.assign(glassShine, {blending: T.CustomBlending, blendEquation: T.AddEquation, blendSrc: T.OneFactor, blendDst: T.OneFactor, blendSrcAlpha: T.ZeroFactor, blendDstAlpha: T.OneFactor});
-      const gb = new T.Mesh(gGeo, glassBack); gb.renderOrder = 2; body.add(gb);
-      const gt = new T.Mesh(gGeo, glassTint); gt.renderOrder = 4; body.add(gt);
-      const gf = new T.Mesh(gGeo, glassShine); gf.renderOrder = 6; body.add(gf);
-      const gbs = new T.Mesh(gGeo, glassShine.clone()); gbs.material.side = T.BackSide; gbs.material.envMapIntensity = 1.4; gbs.renderOrder = 3; body.add(gbs);
-
-      /* liquid */
-      this.liqBottom = .24; this.liqTop = HB - .1;
-      const lGeo = extrude(W - .2, HB - .1, .1, D - .22, .05);
-      this.layers = [];
-      const n = this.layered ? 3 : 1;
-      for (let i = 0; i < n; i++) {
-        const mat = new T.MeshPhysicalMaterial({color: new T.Color('#c4661a'), roughness: .12, metalness: 0, transparent: true, opacity: .84, side: T.DoubleSide, clearcoat: 1, clearcoatRoughness: .1, envMapIntensity: .7, emissive: new T.Color('#c4661a'), emissiveIntensity: .3});
-        const lo = new T.Plane(new T.Vector3(0, 1, 0), 0), hi = new T.Plane(new T.Vector3(0, -1, 0), 0);
-        mat.clippingPlanes = [lo, hi]; mat.clipShadows = false;
-        const m = new T.Mesh(lGeo, mat); m.renderOrder = 1; body.add(m);
-        this.layers.push({mesh: m, mat, lo, hi, a: 0, b: 0, ta: 0, tb: 0, col: new T.Color('#c4661a'), tcol: new T.Color('#c4661a')});
-      }
-
-      /* collar and cap */
-      const gold = this.goldMat = new T.MeshPhysicalMaterial({color: new T.Color('#d8ab62'), metalness: 1, roughness: .22, clearcoat: .6, envMapIntensity: 1.6});
-      const collar = new T.Mesh(new T.CylinderGeometry(.24, .26, .2, 48), gold); collar.position.y = HB + BV + .1; body.add(collar);
-      const capMat = this.capMat = new T.MeshPhysicalMaterial({color: new T.Color('#d8ab62'), metalness: 1, roughness: .2, clearcoat: 1, clearcoatRoughness: .08, envMapIntensity: 1.7});
-      const cap = new T.Mesh(new T.CylinderGeometry(.37, .37, .6, 64), capMat); cap.position.y = HB + BV + .2 + .3; body.add(cap);
-      const capTop = new T.Mesh(new T.TorusGeometry(.355, .018, 12, 64), capMat); capTop.rotation.x = Math.PI / 2; capTop.position.y = HB + BV + .5 + .3; body.add(capTop);
-      this.capTarget = {col: new T.Color('#d8ab62'), metal: 1, rough: .2};
-
-      /* label on the front face */
-      this.labelCanvas = document.createElement('canvas'); this.labelCanvas.width = 640; this.labelCanvas.height = 520;
-      this.labelTex = new T.CanvasTexture(this.labelCanvas); this.labelTex.encoding = T.sRGBEncoding; this.labelTex.anisotropy = 4;
-      const label = new T.Mesh(new T.PlaneGeometry(W * .56, W * .56 * 520 / 640), new T.MeshStandardMaterial({map: this.labelTex, transparent: true, roughness: .55, metalness: .05}));
-      label.position.set(0, HB * .5, D / 2 + BV + .004); label.renderOrder = 7; body.add(label);
-      const labelBack = label.clone(); labelBack.material = label.material.clone(); labelBack.material.opacity = .22; labelBack.position.z = -(D / 2 + BV + .004); labelBack.rotation.y = Math.PI; labelBack.renderOrder = 3; body.add(labelBack);
-
-      /* soft floor shadow */
-      const sh = new T.Mesh(new T.PlaneGeometry(3.4, 1.6), new T.MeshBasicMaterial({map: shadowTex(), transparent: true, depthWrite: false}));
-      sh.rotation.x = -Math.PI / 2; sh.position.y = -1.32 - BV - .01; pivot.add(sh); this.shadow = sh;
-
-      /* motion state */
-      this.rotY = -.5; this.velY = opts.idleSpin === false ? 0 : .004; this.tiltX = 0; this.tTiltX = 0;
-      this.wob = {x: 0, z: 0, vx: 0, vz: 0}; this.lastVel = 0; this.dragging = false; this.idleAt = performance.now();
-      this.visible = false; this.disposed = false;
-      this._input(); this._size(); this.setLabel('AVENOR', opts.labelLine || 'EAU DE PARFUM', '');
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this._drawLabel());
-      new ResizeObserver(() => this._size()).observe(canvas.parentElement || canvas);
-      new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; if (this.visible) this._loop(); }).observe(canvas);
-      this.layout(this.layered ? [] : [{color: '#c4661a'}], true);
-    }
-    _size(){
-      const r = this.canvas.getBoundingClientRect(); if (!r.width || !r.height) return;
-      this.renderer.setSize(r.width, r.height, false);
-      const a = r.width / r.height; this.camera.aspect = a;
-      const base = this.opts.distance || 7.4; this.camera.position.z = a < .8 ? base * (1 + (.8 - a) * 1.1) : base;
-      this.camera.updateProjectionMatrix(); this._render();
-    }
-    _input(){
-      const c = this.canvas; let lx = 0, ly = 0;
-      c.style.touchAction = 'pan-y'; c.style.cursor = 'grab';
-      c.addEventListener('pointerdown', e => { this.dragging = true; lx = e.clientX; ly = e.clientY; c.setPointerCapture(e.pointerId); c.style.cursor = 'grabbing'; this.onGrab && this.onGrab(); });
-      c.addEventListener('pointermove', e => {
-        if (!this.dragging) return;
-        const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY;
-        this.velY = dx * .011; this.tTiltX = Math.max(-.32, Math.min(.32, this.tTiltX + dy * .004)); this.idleAt = performance.now();
-      });
-      const up = () => { this.dragging = false; c.style.cursor = 'grab'; this.idleAt = performance.now(); };
-      c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up);
-      c.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { this.velY -= .08; e.preventDefault(); } if (e.key === 'ArrowRight') { this.velY += .08; e.preventDefault(); } });
-    }
-    _drawLabel(){
-      const c = this.labelCanvas, x = c.getContext('2d'), w = c.width, h = c.height, L = this._label || {};
-      x.clearRect(0, 0, w, h);
-      const r = 26; x.beginPath(); x.moveTo(r, 0); x.arcTo(w, 0, w, h, r); x.arcTo(w, h, 0, h, r); x.arcTo(0, h, 0, 0, r); x.arcTo(0, 0, w, 0, r); x.closePath();
-      x.fillStyle = 'rgba(244,236,222,.93)'; x.fill();
-      x.strokeStyle = 'rgba(176,138,82,.9)'; x.lineWidth = 4; x.stroke();
-      x.strokeStyle = 'rgba(176,138,82,.45)'; x.lineWidth = 2; x.strokeRect(22, 22, w - 44, h - 44);
-      x.fillStyle = '#2a2017'; x.textAlign = 'center'; x.textBaseline = 'middle';
-      const spaced = (t, px, font, y, sp) => { x.font = font; const chars = [...t]; const widths = chars.map(ch => x.measureText(ch).width); const total = widths.reduce((a, b) => a + b, 0) + sp * (chars.length - 1); let cx = w / 2 - total / 2; chars.forEach((ch, i) => { x.textAlign = 'left'; x.fillText(ch, cx, y); cx += widths[i] + sp; }); x.textAlign = 'center'; };
-      spaced(L.title || 'AVENOR', 0, '500 108px "Cormorant Garamond", Garamond, serif', h * .4, 18);
-      x.fillStyle = 'rgba(176,138,82,1)'; x.fillRect(w / 2 - 70, h * .56, 140, 2);
-      x.fillStyle = '#4a3d31'; spaced(L.line || 'EAU DE PARFUM', 0, '400 30px Jost, "Helvetica Neue", Arial, sans-serif', h * .66, 8);
-      if (L.name) { x.fillStyle = '#7a5f3c'; x.font = 'italic 400 42px "Cormorant Garamond", Garamond, serif'; x.fillText(L.name, w / 2, h * .8); }
-      this.labelTex.needsUpdate = true; this._render();
-    }
-    setLabel(title, line, name){ this._label = {title, line, name}; this._drawLabel(); }
-    setCap(kind){
-      const t = this.capTarget;
-      if (kind === 'black') { t.col.set('#141210'); t.metal = .2; t.rough = .12; } else { t.col.set('#d8ab62'); t.metal = 1; t.rough = .2; }
-    }
-    /* stack of liquid layers, bottom to top; each takes `share` of the liquid height */
-    layout(list, instant){
-      const share = this.layered ? 1 / 3 : (this.opts.fill || .86);
-      const span = this.liqTop - this.liqBottom;
-      this.layers.forEach((L, i) => {
-        const item = list[i];
-        if (item) { L.ta = this.liqBottom + span * share * i; L.tb = this.liqBottom + span * share * (i + 1); L.tcol.set(item.color); }
-        else { const top = this.liqBottom + span * share * list.length; L.ta = top; L.tb = top; }
-        if (instant) { L.a = L.ta; L.b = L.tb; L.col.copy(L.tcol); }
-      });
-      this.kick(.06); this._loop();
-    }
-    setFragrance(id, instant){
-      const f = FRAG[id]; if (!f) return;
-      this.layers.forEach(L => { L.tcol.set(f.liquid); if (instant) L.col.copy(L.tcol); });
-      this.setCap(f.cap); if (instant) { this.capMat.color.copy(this.capTarget.col); this.capMat.metalness = this.capTarget.metal; this.capMat.roughness = this.capTarget.rough; } this.setLabel('AVENOR', 'EAU DE PARFUM', f.name);
-      this.kick(.14); this.velY += .09; this._loop();
-    }
-    blendTo(color, name){
-      this.layers.forEach(L => L.tcol.set(color));
-      const span = this.liqTop - this.liqBottom, top = this.liqBottom + span * .96;
-      this.layers.forEach((L, i) => { L.ta = this.liqBottom + (top - this.liqBottom) * i / 3; L.tb = this.liqBottom + (top - this.liqBottom) * (i + 1) / 3; });
-      if (name) this.setLabel('AVENOR', 'YOUR CLOSEST MATCH', name);
-      this.kick(.22); this.velY += .16; this._loop();
-    }
-    kick(v){ this.wob.vz += v; this.wob.vx += v * .5; }
-    _render(){ this.renderer.render(this.scene, this.camera); }
-    _loop(){
-      if (this._raf || this.disposed) return;
-      const step = () => {
-        this._raf = 0;
-        if (!this.visible || document.hidden) return;
-        const now = performance.now();
-        if (!this.dragging) {
-          this.velY *= .955;
-          if (this.opts.idleSpin !== false && now - this.idleAt > 1800) this.velY += (.0045 - this.velY) * .02;
-          this.tTiltX *= .92;
-        }
-        this.rotY += this.velY; this.tiltX += (this.tTiltX - this.tiltX) * .12;
-        this.pivot.rotation.y = this.rotY; this.pivot.rotation.x = this.tiltX;
-        /* slosh: a damped spring pushed by changes in spin speed */
-        const acc = this.velY - this.lastVel; this.lastVel = this.velY;
-        const W = this.wob;
-        W.vz += (-W.z * .07) - acc * 1.6 - this.velY * .012; W.vz *= .92; W.z += W.vz;
-        W.vx += (-W.x * .06) + (this.tTiltX - this.tiltX) * .2; W.vx *= .92; W.x += W.vx;
-        W.z = Math.max(-.2, Math.min(.2, W.z)); W.x = Math.max(-.16, Math.min(.16, W.x));
-        /* level surfaces in world space, tilted by the slosh */
-        const n = new T.Vector3(Math.sin(W.z), Math.cos(W.z) * Math.cos(W.x), Math.sin(W.x)).normalize();
-        const by = this.body.position.y;
-        this.layers.forEach((L, i) => {
-          L.a += (L.ta - L.a) * .07; L.b += (L.tb - L.b) * .07; L.col.lerp(L.tcol, .06);
-          L.mat.color.copy(L.col); L.mat.emissive.copy(L.col);
-          const empty = L.b - L.a < .004; L.mesh.visible = !empty;
-          const pa = new T.Vector3(0, by + L.a, 0), pb = new T.Vector3(0, by + L.b, 0);
-          if (i === 0) { L.lo.normal.set(0, 1, 0); L.lo.constant = -(by + L.a - .6); } else { L.lo.normal.copy(n); L.lo.constant = -n.dot(pa); }
-          L.hi.normal.copy(n).negate(); L.hi.constant = n.dot(pb);
-        });
-        /* cap */
-        const t = this.capTarget; this.capMat.color.lerp(t.col, .08); this.capMat.metalness += (t.metal - this.capMat.metalness) * .08; this.capMat.roughness += (t.rough - this.capMat.roughness) * .08;
-        this._render();
-        const settling = Math.abs(this.velY) > .0004 || Math.abs(W.vz) > .0005 || Math.abs(W.vx) > .0005 || this.layers.some(L => Math.abs(L.ta - L.a) > .001 || Math.abs(L.tb - L.b) > .001) || this.opts.idleSpin !== false;
-        if (settling) this._raf = requestAnimationFrame(step);
-      };
-      this._raf = requestAnimationFrame(step);
-    }
-  }
-  window.AvenorBottle = AvenorBottle;
-})();
-
-}
-/* AVENOR scent visualiser: a living scene for each fragrance, drawn on a 2D canvas. */
-(() => {
-  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const rnd = (a, b) => a + Math.random() * (b - a);
-  const noise = (x, y, t) => Math.sin(x * 1.7 + t) * Math.cos(y * 1.3 - t * .7) + Math.sin((x + y) * .9 + t * .4) * .6 + Math.cos(x * .5 - y * 2.1 + t * .2) * .4;
-
-  const SCENES = {
-    amber: {
-      bg: '#120a05',
-      init(w, h){ this.p = Array.from({length: Math.round(w * h / 1500)}, () => this.spawn(w, h, true)); this.fresh = true; },
-      spawn(w, h, any){ return {x: rnd(w * .15, w * .85), y: any ? rnd(0, h) : h + rnd(0, 40), life: 0, max: rnd(220, 420), hue: rnd(22, 40), s: rnd(.6, 1.6)}; },
-      draw(c, w, h, t){
-        if (this.fresh) { c.fillStyle = this.bg; c.fillRect(0, 0, w, h); this.fresh = false; }
-        c.globalCompositeOperation = 'source-over'; c.fillStyle = 'rgba(18,10,5,.075)'; c.fillRect(0, 0, w, h);
-        const g = c.createRadialGradient(w * .5, h * 1.05, 0, w * .5, h * 1.05, h * .9); g.addColorStop(0, 'rgba(255,140,40,.08)'); g.addColorStop(1, 'rgba(255,140,40,0)'); c.fillStyle = g; c.fillRect(0, 0, w, h);
-        c.globalCompositeOperation = 'lighter';
-        this.p.forEach((q, i) => {
-          const a = noise(q.x * .0045, q.y * .0045, t * .00025) * Math.PI;
-          q.x += Math.cos(a) * .9 * q.s; q.y += Math.sin(a) * .5 * q.s - .55 * q.s; q.life++;
-          const k = q.life / q.max, al = Math.sin(k * Math.PI) * .16;
-          c.fillStyle = `hsla(${q.hue},92%,${52 + k * 14}%,${al})`; c.beginPath(); c.arc(q.x, q.y, 1.6 + k * 4.2, 0, 6.283); c.fill();
-          if (q.life > q.max || q.y < -20) this.p[i] = this.spawn(w, h, false);
-        });
-        c.globalCompositeOperation = 'source-over';
-      }
-    },
-    blush: {
-      bg: '#2a121a',
-      init(w, h){
-        this.bokeh = Array.from({length: 14}, () => ({x: rnd(0, w), y: rnd(0, h), r: rnd(40, 130), vx: rnd(-.12, .12), vy: rnd(-.1, .06), a: rnd(.05, .14)}));
-        this.pet = Array.from({length: Math.round(w / 34)}, () => this.petal(w, h, true));
-      },
-      petal(w, h, any){ return {x: rnd(-20, w + 20), y: any ? rnd(-h * .2, h) : -30, s: rnd(7, 16), vx: rnd(-.5, .35), vy: rnd(.35, 1), r: rnd(0, 6.28), vr: rnd(-.02, .02), f: rnd(0, 6.28), hue: rnd(345, 360) % 360, l: rnd(78, 90)}; },
-      draw(c, w, h, t){
-        const g = c.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#3b1622'); g.addColorStop(1, '#1d0b11'); c.fillStyle = g; c.fillRect(0, 0, w, h);
-        c.globalCompositeOperation = 'lighter';
-        this.bokeh.forEach(b => { b.x += b.vx; b.y += b.vy; if (b.x < -b.r) b.x = w + b.r; if (b.x > w + b.r) b.x = -b.r; if (b.y < -b.r) b.y = h + b.r; if (b.y > h + b.r) b.y = -b.r;
-          const r = c.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r); r.addColorStop(0, `rgba(255,170,185,${b.a})`); r.addColorStop(1, 'rgba(255,170,185,0)'); c.fillStyle = r; c.fillRect(b.x - b.r, b.y - b.r, b.r * 2, b.r * 2); });
-        c.globalCompositeOperation = 'source-over';
-        this.pet.forEach((p, i) => {
-          p.f += .03; p.r += p.vr; p.x += p.vx + Math.sin(p.f) * .6; p.y += p.vy;
-          c.save(); c.translate(p.x, p.y); c.rotate(p.r); c.scale(1, Math.abs(Math.sin(p.f)) * .7 + .3);
-          const pg = c.createLinearGradient(-p.s, 0, p.s, 0); pg.addColorStop(0, `hsla(${p.hue},70%,${p.l}%,.85)`); pg.addColorStop(1, `hsla(${p.hue},60%,${p.l - 12}%,.7)`);
-          c.fillStyle = pg; c.beginPath(); c.moveTo(-p.s, 0); c.bezierCurveTo(-p.s * .4, -p.s * .8, p.s * .6, -p.s * .55, p.s, 0); c.bezierCurveTo(p.s * .5, p.s * .45, -p.s * .4, p.s * .5, -p.s, 0); c.fill(); c.restore();
-          if (p.y > h + 30 || p.x < -40 || p.x > w + 40) this.pet[i] = this.petal(w, h, false);
-        });
-      }
-    },
-    forest: {
-      bg: '#08110a',
-      init(w, h){
-        this.fog = Array.from({length: 9}, () => ({x: rnd(0, w), y: rnd(h * .3, h), r: rnd(h * .25, h * .55), vx: rnd(.08, .25) * (Math.random() < .5 ? -1 : 1), a: rnd(.05, .1)}));
-        this.flies = Array.from({length: 46}, () => ({x: rnd(0, w), y: rnd(h * .2, h), vx: rnd(-.3, .3), vy: rnd(-.25, .2), ph: rnd(0, 6.28), sp: rnd(.02, .05)}));
-      },
-      draw(c, w, h, t){
-        const g = c.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#132015'); g.addColorStop(1, '#050a06'); c.fillStyle = g; c.fillRect(0, 0, w, h);
-        c.globalCompositeOperation = 'lighter';
-        for (let i = 0; i < 4; i++) {
-          const sway = Math.sin(t * .00018 + i * 1.7) * .08, x = w * (.2 + i * .22);
-          c.save(); c.translate(x, -h * .1); c.rotate(.32 + sway);
-          const bg = c.createLinearGradient(0, 0, 0, h * 1.4); bg.addColorStop(0, 'rgba(220,235,160,.10)'); bg.addColorStop(1, 'rgba(220,235,160,0)');
-          c.fillStyle = bg; c.fillRect(-w * .05, 0, w * .1, h * 1.4); c.restore();
-        }
-        this.fog.forEach(f => { f.x += f.vx; if (f.x < -f.r) f.x = w + f.r; if (f.x > w + f.r) f.x = -f.r;
-          const r = c.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r); r.addColorStop(0, `rgba(150,180,120,${f.a})`); r.addColorStop(1, 'rgba(150,180,120,0)'); c.fillStyle = r; c.fillRect(f.x - f.r, f.y - f.r, f.r * 2, f.r * 2); });
-        this.flies.forEach(f => { f.ph += f.sp; f.x += f.vx + Math.sin(f.ph * 1.3) * .3; f.y += f.vy + Math.cos(f.ph) * .25;
-          if (f.x < 0) f.x = w; if (f.x > w) f.x = 0; if (f.y < h * .1) f.y = h; if (f.y > h) f.y = h * .1;
-          const a = Math.max(0, Math.sin(f.ph * 2)) * .9, r = c.createRadialGradient(f.x, f.y, 0, f.x, f.y, 7);
-          r.addColorStop(0, `rgba(230,255,150,${a})`); r.addColorStop(1, 'rgba(230,255,150,0)'); c.fillStyle = r; c.fillRect(f.x - 7, f.y - 7, 14, 14); });
-        c.globalCompositeOperation = 'source-over';
-      }
-    },
-    ocean: {
-      bg: '#061420',
-      init(w, h){
-        this.ow = 180; this.oh = Math.max(60, Math.round(180 * h / w));
-        this.off = document.createElement('canvas'); this.off.width = this.ow; this.off.height = this.oh; this.oc = this.off.getContext('2d'); this.img = this.oc.createImageData(this.ow, this.oh);
-        this.bub = Array.from({length: 30}, () => ({x: rnd(0, w), y: rnd(0, h), r: rnd(1.5, 4.5), v: rnd(.4, 1.2), ph: rnd(0, 6.28)}));
-      },
-      draw(c, w, h, t){
-        const T = t * .0011, d = this.img.data, W = this.ow, H = this.oh;
-        for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
-          const v = Math.sin(x * .11 + T) + Math.sin(y * .13 - T * 1.2) + Math.sin((x + y) * .07 + T * .7) + Math.sin(Math.hypot(x - W * .5, y - H * .3) * .14 - T * 1.6);
-          const b = Math.pow(Math.max(0, 1 - Math.abs(v) * .5), 7), depth = y / H, i = (y * W + x) * 4;
-          d[i] = 6 + b * 80 * (1 - depth * .6); d[i + 1] = 22 + b * 145 * (1 - depth * .5) + (1 - depth) * 16; d[i + 2] = 36 + b * 190 * (1 - depth * .4) + (1 - depth) * 30; d[i + 3] = 255;
-        }
-        this.oc.putImageData(this.img, 0, 0);
-        c.imageSmoothingEnabled = true; c.drawImage(this.off, 0, 0, w, h);
-        c.globalCompositeOperation = 'lighter';
-        this.bub.forEach(b => { b.y -= b.v; b.ph += .05; b.x += Math.sin(b.ph) * .4; if (b.y < -10) { b.y = h + 10; b.x = rnd(0, w); }
-          c.strokeStyle = 'rgba(190,230,255,.35)'; c.lineWidth = 1; c.beginPath(); c.arc(b.x, b.y, b.r, 0, 6.283); c.stroke(); });
-        c.globalCompositeOperation = 'source-over';
-      }
-    }
-  };
-
-  class ScentVis {
-    constructor(canvas){
-      this.c = canvas; this.x = canvas.getContext('2d'); this.mode = null; this.scene = null; this.visible = false; this.fade = null; this.cycle = null;
-      this.size(); new ResizeObserver(() => this.size()).observe(canvas.parentElement || canvas);
-      new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; if (this.visible) this.loop(); }).observe(canvas);
-    }
-    size(){
-      const r = this.c.getBoundingClientRect(); if (!r.width) return;
-      const s = 1; this.w = Math.round(r.width * s); this.h = Math.round(r.height * s);
-      this.c.width = this.w; this.c.height = this.h;
-      if (this.scene) { this.scene.init(this.w, this.h); this.scene.fresh = true; }
-    }
-    setMode(m){
-      clearInterval(this.cycle); this.cycle = null;
-      if (m === 'set') { const order = ['amber', 'blush', 'forest', 'ocean']; let i = 0; this.setMode(order[0]); this.cycle = setInterval(() => { i = (i + 1) % 4; this._switch(order[i]); }, 6000); return; }
-      this._switch(m);
-    }
-    _switch(m){
-      if (m === this.mode || !SCENES[m]) return;
-      if (this.mode && this.w) { const snap = document.createElement('canvas'); snap.width = this.w; snap.height = this.h; snap.getContext('2d').drawImage(this.c, 0, 0); this.fade = {snap, t0: performance.now()}; }
-      this.mode = m; this.scene = Object.create(SCENES[m]); if (this.w) this.scene.init(this.w, this.h);
-      if (RM) this.frame(performance.now()); else this.loop();
-    }
-    frame(now){
-      if (!this.scene || !this.w) return;
-      this.scene.draw(this.x, this.w, this.h, now);
-      if (this.fade) { const k = (now - this.fade.t0) / 1100; if (k >= 1) this.fade = null; else { this.x.globalAlpha = 1 - k; this.x.drawImage(this.fade.snap, 0, 0); this.x.globalAlpha = 1; } }
-    }
-    loop(){
-      if (this._raf || RM) return;
-      const step = now => { this._raf = 0; if (!this.visible || document.hidden) return; if (!this._last || now - this._last >= 32) { this._last = now; this.frame(now); } this._raf = requestAnimationFrame(step); };
-      this._raf = requestAnimationFrame(step);
-    }
-  }
-  window.ScentVis = ScentVis;
-})();
-
-/* Shop quick view: the bottle in 3D inside its scent scene, with a switch back to the photo. */
-(() => {
-  const mimg = document.getElementById('mImg'); if (!mimg) return;
-  let vis = null, bottle = null, ok = true, loading = null, current = null;
-  const toggle = mimg.querySelector('.mview');
-  function setView(v){ mimg.classList.toggle('photo', v === 'photo'); toggle.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v)); }
-  toggle.addEventListener('click', e => { const b = e.target.closest('button'); if (b) setView(b.dataset.v); });
-  function getBottle(){
-    if (bottle) return Promise.resolve(bottle);
-    if (!ok) return Promise.reject();
-    return loading || (loading = (window.loadThree ? loadThree() : Promise.reject()).then(() => {
-      if (!window.AvenorBottle || !AvenorBottle.supported()) throw new Error('no webgl');
-      bottle = new AvenorBottle(document.getElementById('mB3d'), {distance: 7.9}); bottle.onGrab = () => mimg.classList.add('grabbed'); document.getElementById('mB3d').classList.add('ready'); return bottle;
-    }).catch(e => { ok = false; throw e; }));
-  }
-  window.expModal = p => {
-    current = p;
-    if (!vis && window.ScentVis) vis = new ScentVis(document.getElementById('mVis'));
-    if (vis) vis.setMode(p.fixed ? 'set' : p.id);
-    mimg.classList.remove('grabbed');
-    if (p.fixed) { toggle.hidden = true; setView('photo'); return; }
-    if (bottle) { toggle.hidden = false; bottle.setFragrance(p.id, true); bottle.rotY = -1.1; bottle.velY = .09; setView('3d'); return; }
-    toggle.hidden = true; setView('photo');
-    getBottle().then(b => { if (current !== p) return; toggle.hidden = false; b.setFragrance(p.id, true); b.rotY = -1.1; b.velY = .09; setView('3d'); }).catch(() => {});
-  };
-  /* warm up quietly once the shop has settled, so the first quick view opens in 3D */
-  addEventListener('load', () => setTimeout(() => { const warm = () => getBottle().catch(() => {}); if (window.requestIdleCallback) requestIdleCallback(warm); else setTimeout(warm, 1); }, 2500));
-})();
-
-/* Compose your scent: pick a top, heart and base note; the bottle fills in layers; reveal the closest AVENOR. */
-(() => {
-  const root = document.getElementById('studio'); if (!root) return;
-  const $s = id => document.getElementById(id);
-  const NOTES = {
-    top:   [{id:'bergamot', n:'Bergamot', c:'#d2d85a', d:'Sparkling citrus peel'}, {id:'pepper', n:'Pink pepper', c:'#de7f8a', d:'Bright, rosy spice'}, {id:'saffron', n:'Saffron', c:'#dc8420', d:'Warm, leathery glow'}, {id:'grapefruit', n:'Grapefruit', c:'#f2967a', d:'Juicy and bitter-fresh'}],
-    heart: [{id:'jasmine', n:'Jasmine', c:'#efe2bf', d:'Creamy white flower'}, {id:'rose', n:'Damask rose', c:'#c4506a', d:'Velvet, honeyed rose'}, {id:'orris', n:'Orris', c:'#a893cc', d:'Powdery iris root'}, {id:'neroli', n:'Neroli', c:'#eec066', d:'Orange blossom light'}],
-    base:  [{id:'vanilla', n:'Vanilla', c:'#c08b48', d:'Sweet, warm, sensual'}, {id:'oud', n:'Oud', c:'#5a2f1c', d:'Dark, smoky resin'}, {id:'vetiver', n:'Vetiver', c:'#66742f', d:'Earthy green root'}, {id:'cedar', n:'Atlas cedar', c:'#985d32', d:'Dry, pencil-shaving wood'}],
-  };
-  const W = {bergamot:{blush:2, ocean:1}, pepper:{amber:2, blush:1}, saffron:{amber:3}, grapefruit:{ocean:3}, jasmine:{blush:3, amber:1}, rose:{amber:3, blush:1}, orris:{forest:3}, neroli:{ocean:3, blush:1}, vanilla:{amber:2, blush:1}, oud:{amber:3}, vetiver:{forest:3, ocean:1}, cedar:{forest:2, ocean:1}};
-  const STACK = ['base', 'heart', 'top'];
-  const sel = {top: null, heart: null, base: null};
-  const FR = window.AVENOR_FRAG || {amber:{name:'Amber Noir', liquid:'#b85a14'}, blush:{name:'Blush Petal', liquid:'#f19aa0'}, forest:{name:'Forest Whisper', liquid:'#6c7a22'}, ocean:{name:'Ocean Breeze', liquid:'#3a8dc8'}};
-  const find = id => Object.values(NOTES).flat().find(n => n.id === id);
-
-  /* chips */
-  Object.entries(NOTES).forEach(([layer, list]) => {
-    $s('n-' + layer).innerHTML = list.map(n => `<button type="button" class="nchip" data-layer="${layer}" data-note="${n.id}" aria-pressed="false" title="${n.d}"><i style="--c:${n.c}"></i>${n.n}</button>`).join('');
-  });
-
-  /* stage: 3D bottle or a drawn fallback */
-  let bottle = null;
-  const useCss = () => { $s('stB3d').hidden = true; $s('stCss').hidden = false; paint(); };
-  const sio = new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return; sio.disconnect();
-    (window.loadThree ? loadThree() : Promise.reject()).then(() => {
-      if (!window.AvenorBottle || !AvenorBottle.supported()) throw new Error('no webgl');
-      bottle = new AvenorBottle($s('stB3d'), {mode: 'layers', distance: 7.4}); bottle.setLabel('AVENOR', 'YOUR BLEND', '');
-      bottle.onGrab = () => root.classList.add('grabbed'); bottle.layout(stack(), true); $s('stB3d').classList.add('ready');
-    }).catch(useCss);
-  }, {rootMargin: '700px 0px'});
-  sio.observe(root);
-
-  function stack(){ return STACK.filter(l => sel[l]).map(l => ({color: find(sel[l]).c, layer: l})); }
-  function paint(){
-    const s = stack();
-    if (bottle) bottle.layout(s);
-    else { const lays = $s('stCss').querySelectorAll('.lay'); lays.forEach((el, i) => { const it = s[i]; el.style.height = it ? '28%' : '0'; if (it) el.style.background = it.color; }); }
-    $s('stLegend').innerHTML = s.map(it => `<span class="on"><i style="--c:${it.color}"></i>${it.layer[0].toUpperCase() + it.layer.slice(1)} · ${find(sel[it.layer]).n}</span>`).join('');
-    STACK.forEach(l => { const li = root.querySelector(`.layer[data-layer="${l}"]`); li.classList.toggle('done', !!sel[l]); $s('p-' + l).textContent = sel[l] ? find(sel[l]).n : 'Choose one'; });
-    const n = s.length; $s('stCount').textContent = `${n} of 3 layers`;
-    $s('stReveal').disabled = n < 3;
-    const mix = s.length ? s[s.length - 1].color : '#c9a46a'; root.style.setProperty('--glow', hexA(mix, .26));
-  }
-  function hexA(h, a){ const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
-
-  root.addEventListener('click', e => {
-    const c = e.target.closest('.nchip'); if (!c) return;
-    const l = c.dataset.layer; sel[l] = sel[l] === c.dataset.note ? null : c.dataset.note;
-    root.querySelectorAll(`.nchip[data-layer="${l}"]`).forEach(b => b.setAttribute('aria-pressed', b.dataset.note === sel[l]));
-    $s('stResult').hidden = true; root.classList.remove('revealed');
-    if (bottle) bottle.setLabel('AVENOR', 'YOUR BLEND', '');
-    paint();
-  });
-
-  $s('stReveal').addEventListener('click', () => {
-    const score = {amber: 0, blush: 0, forest: 0, ocean: 0};
-    STACK.forEach(l => Object.entries(W[sel[l]]).forEach(([f, v]) => score[f] += v));
-    const best = Object.keys(score).sort((a, b) => score[b] - score[a])[0];
-    const shared = STACK.slice().reverse().map(l => sel[l]).filter(id => (W[id][best] || 0) >= 2).map(id => find(id).n.toLowerCase());
-    const p = (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []).find(x => x.id === best);
-    const why = shared.length >= 2 ? `It shares ${shared.slice(0, -1).join(', ')} and ${shared[shared.length - 1]} with your blend.`
-              : shared.length === 1 ? `It shares ${shared[0]} with your blend, and carries the same mood.`
-              : `None of your notes are in it exactly, but it carries the same mood.`;
-    $s('stResult').innerHTML = `<div class="k">Your blend</div><h3>${STACK.slice().reverse().map(l => find(sel[l]).n).join(' · ')}</h3><div class="k" style="margin-top:10px">Closest AVENOR</div><h4>${FR[best].name}</h4><p>${why}</p>
-      <div class="r-act"><button type="button" class="btn" id="stView">Explore ${FR[best].name}</button>${p ? `<button type="button" class="addbtn" id="stAdd" data-img="${p.img}">Add 50 ml · $${p.base}</button>` : ''}</div>`;
-    $s('stResult').hidden = false; root.classList.add('revealed');
-    if (bottle) bottle.blendTo(FR[best].liquid, FR[best].name);
-    root.style.setProperty('--glow', hexA(FR[best].liquid, .32));
-    window.avenorSound && avenorSound.swell();
-    $s('stView').onclick = () => window.openModal && openModal(best);
-    const add = $s('stAdd'); if (add) add.onclick = () => { window.addToBag && addToBag(p, 50, 1); add.textContent = 'Added to your bag'; };
-  });
-
-  $s('stReset').addEventListener('click', () => {
-    Object.keys(sel).forEach(k => sel[k] = null);
-    root.querySelectorAll('.nchip').forEach(b => b.setAttribute('aria-pressed', 'false'));
-    $s('stResult').hidden = true; root.classList.remove('revealed');
-    if (bottle) bottle.setLabel('AVENOR', 'YOUR BLEND', '');
-    paint();
-  });
-  paint();
 })();
 </script>
 </body>

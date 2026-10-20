@@ -1,6 +1,6 @@
 # AVENOR
 
-Luxury perfume website: a scroll-driven film hero, a 3D bottle you can turn, a compose-your-scent studio, a living scent visualiser for each fragrance and an optional ambient soundtrack.
+Luxury perfume website: a scroll-driven film hero, a gold loading ritual, a scent finder and an optional ambient soundtrack.
 
 ## Pages
 
@@ -34,4 +34,4 @@ Works as-is on Vercel, Netlify or GitHub Pages: point the host at the repository
 
 ## External libraries
 
-three.js 0.149.0 (3D bottle) is served from `vendor/three.min.js`, with jsDelivr as a backup, and loads only when a bottle is near. Lenis 1.1.13 (smooth scrolling) loads from jsDelivr. Fonts come from Google Fonts (Cormorant Garamond, Jost).
+Lenis 1.1.13 (smooth scrolling) loads from jsDelivr at a pinned version. Fonts come from Google Fonts (Cormorant Garamond, Jost).
