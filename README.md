@@ -34,4 +34,4 @@ Works as-is on Vercel, Netlify or GitHub Pages: point the host at the repository
 
 ## External libraries
 
-Loaded from jsDelivr at pinned versions: three.js 0.149.0 (3D bottle) and Lenis 1.1.13 (smooth scrolling). Fonts come from Google Fonts (Cormorant Garamond, Jost).
+three.js 0.149.0 (3D bottle) is served from `vendor/three.min.js`, with jsDelivr as a backup, and loads only when a bottle is near. Lenis 1.1.13 (smooth scrolling) loads from jsDelivr. Fonts come from Google Fonts (Cormorant Garamond, Jost).
